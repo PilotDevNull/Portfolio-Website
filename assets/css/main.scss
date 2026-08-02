@@ -1,0 +1,10 @@
+---
+---
+
+@charset "utf-8";
+
+$resume-order: 2;
+$sidebar-order: 1;
+
+@import "cv/skins/jawad"; // skin matched to the original CV colours
+@import "cv/default"; // main partials
