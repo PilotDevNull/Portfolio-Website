@@ -1,0 +1,162 @@
+#
+# Be aware that even a small syntax error here can lead to failures in output.
+#
+
+sidebar:
+  position: left # sidebar sits on the left, matching the original CV
+  about: False
+  education: True # show education in the sidebar, like the original CV
+
+  # Profile information
+  name: Jawad Kachbal
+  tagline: "Software Engineer &bull; IT Support Technician &bull; Computer Science Student"
+  avatar: jawad.jpg
+  quote: "A mind stretched to new measurements never returns to its original dimensions."
+
+  # Sidebar links
+  email: jawadkachbal@outlook.com
+  phone: "+27 65 877 0115"
+  timezone:
+  citizenship:
+  website: https://jawadkachbal.com
+  linkedin: jawadkachbal
+  xing:
+  github: PilotDevNull
+  telegram:
+  gitlab:
+  bitbucket:
+  bluesky:
+  twitter:
+  stack-overflow:
+  codewars:
+  goodreads:
+  mastodon:
+  hackerrank:
+  leetcode:
+  pdf:
+
+  languages:
+    title: Languages
+    info:
+    - idiom: English
+      level: Home Language
+
+    - idiom: Afrikaans
+      level: First Additional
+
+    - idiom: isiZulu
+      level: Beginner
+
+  interests:
+    title: Interests
+    info:
+
+career-profile:
+  title: Profile
+  summary: |
+    Computer Science student and aspiring software engineer with hands-on project experience in C++, Java, and Python, complemented by years of professional IT support and client-facing experience.
+
+education:
+  title: Education
+  info:
+  - degree: "BSc. Computer Science & Information Technology"
+    university: University of KwaZulu-Natal
+    time: Jan 2023 - Nov 2026 &middot; In Progress
+    details: |
+      Double major in Computer Science and Mathematics, taking additional mathematics coursework beyond the standard single-major track for a stronger quantitative and analytical foundation.
+  - degree: National Senior Certificate, Technical Stream
+    university: George Campbell School of Technology
+    time: Jan 2017 - Nov 2020
+    details: |
+      Electrical Technology (Digital Systems): circuit analysis, logic systems, communications, amplifiers, RLC circuits, and protective devices. Hands-on with PCB layout/design basics, soldering, microcontroller-based circuit building, and electrical measurement and troubleshooting.
+
+experiences:
+  title: Experience
+  info:
+  - role: IT Support & Hardware Technician
+    time: Jan 2021 - Present &middot; 5 yrs 7 mo
+    company: RM Graphic Solutions &middot; Durban, KwaZulu-Natal
+    details: |
+      Provide end-to-end IT support, diagnosing and resolving hardware and software issues across desktops and laptops. Build and configure custom PCs to meet client and business requirements, carry out system installations, upgrades, backups, and data recovery.
+        - Deliver technical support and preventative maintenance to minimise downtime
+        - Troubleshoot and repair hardware and software faults across a range of systems
+        - Build, configure, and upgrade custom PCs, including backups and data recovery
+  - role: "Sales Representative (Junior &rarr; Senior)"
+    time: Jan 2023 - Jan 2026 &middot; 3 yrs 1 mo
+    company: RM Graphic Solutions &middot; Durban, KwaZulu-Natal
+    details: |
+      Progressed from Junior Sales Representative to Senior Sales Representative, taking on increasing responsibility in sales, account management, and print shop operations. Built long-term client relationships while delivering tailored printing and branding solutions, managing projects from initial enquiry through to final delivery.
+        - Entrusted with day-to-day print shop operations, coordinating workflow between sales and production teams
+        - Developed new business opportunities and managed key client accounts
+        - Consulted with walk-in, telephone, email, and WhatsApp clients to recommend suitable printing and branding solutions
+        - Prepared quotations, negotiated pricing, processed orders, and managed invoicing
+        - Oversaw projects from concept to production, ensuring quality standards and on-time delivery
+
+certifications:
+
+projects:
+  title: Projects
+  intro: For more projects and details, visit my GitHub.
+  assignments:
+  - title: "Nexus Logistics: Inventory Management System"
+    link: "https://github.com/PilotDevNull"
+    tech: "C++ &middot; CLI + Qt6 GUI (bonus) &middot; COMP315 Group Project &middot; Team of 7"
+    details: |
+      Multi-threaded inventory and order-management system for a simulated 5-warehouse logistics network, with an object-oriented product hierarchy and CSV-backed persistence.
+        - Designed a polymorphic OOP hierarchy (Standard, Discounted, Taxable products) with multi-threaded order processing (Producer/Consumer relationship) and per-warehouse analytics via a custom AnalyticsManager
+        - Built a bonus Qt6 GUI (dashboard, inventory, analytics, orders) on top of the CLI backend via an adapter layer
+
+  - title: Starlight Carnival Management System
+    link: "https://github.com/PilotDevNull"
+    tech: "Java, Swing, MySQL/JDBC &middot; COMP306 Group Project"
+    details: |
+      Full-stack desktop database application for managing a carnival's attractions, staff, and access passes.
+        - Modelled 3 disjoint subtype hierarchies with role-based views, stored procedures, and triggers; built a Java Swing CRUD/reporting UI over MySQL via JDBC
+        - Implemented role-based login (Admin, Sales, Maintenance, Guest) with distinct MySQL accounts
+
+  - title: "Music Square: Mood-Based Music Player + PixelPlayer Android App Integration"
+    link: "https://github.com/PilotDevNull"
+    tech: "Python (Flask, librosa), JavaScript/HTML/CSS &middot; Personal Project &middot; Solo"
+    details: |
+      Local player that analyses a FLAC library's audio directly (no tags or cloud lookups) and plots every track on a 2D mood square built from listening to the actual sound.
+        - Extracted tempo, loudness, onset density, brightness, and tonality with librosa, combining library-wide z-scores into weighted arousal/valence mood axes
+        - Built a Flask backend for parallelized analysis/streaming and a vanilla JS/Canvas frontend with zoom/pan, mood-based playlist building, and OS media-key integration
+        - Currently working on porting the analysis algorithm to Android via the open-source PixelPlayer Music Player
+
+  - title: "NLP Sentiment Classification: Naive Bayes vs LSTM vs BERT"
+    link: "https://github.com/PilotDevNull"
+    tech: "Python, scikit-learn, PyTorch/Transformers &middot; COMP316 Group Project &middot; Team of 3"
+    details: |
+      Built and curated a custom dataset of 60,000 Steam game reviews by collecting data through the Steam Web API and processing it to make it suitable for comparative sentiment analysis.
+        - Designed and implemented the BERT fine-tuning pipeline, achieving 90.3% accuracy and a 90.3% F1-score, outperforming the Naive Bayes and Bi-LSTM baselines (&approx;84%) in sentiment classification
+
+oss:
+
+publications:
+
+recommendations:
+
+references:
+  title: References
+  list:
+  - name: Mr Reece Sher
+    role: Owner & CEO, RM Graphic Solutions
+    email: info@rmgraphics.co.za
+    note: Cell number on request
+
+skills:
+  title: Technical Skills
+
+  toolset:
+  - name: "C++ (OOP, multi-threading)"
+  - name: "Java & Swing (JDBC)"
+  - name: "Python (ML / NLP)"
+  - name: "SQL & Database Design"
+  - name: "Qt6 GUI Development"
+  - name: "Git & Version Control"
+  - name: "IT Hardware & Troubleshooting"
+  - name: "CRM & Account Management"
+  - name: "Android Development (Kotlin)"
+
+footer: >
+  &copy; 2026 Jawad Kachbal

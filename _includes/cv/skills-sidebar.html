@@ -1,0 +1,13 @@
+{% assign skills = site.data.cv-data.skills %}
+{% if skills %}
+<div class="skills-container container-block">
+  <h2 class="container-block-title">
+    {{ skills.title }}
+  </h2>
+  <ul class="skills-list">
+    {% for skill in skills.toolset %}
+    <li>{{ skill.name }}</li>
+    {% endfor %}
+  </ul>
+</div><!--//skills-container-->
+{% endif %}

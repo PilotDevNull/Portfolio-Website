@@ -1,0 +1,11 @@
+{% assign profile = site.data.cv-data.career-profile %}
+{% if profile %}
+<div class="profile-container-block container-block">
+  <h2 class="container-block-title">
+    {{ profile.title }}
+  </h2>
+  <div class="profile-summary">
+    {{ profile.summary | markdownify }}
+  </div>
+</div><!--//profile-container-block-->
+{% endif %}

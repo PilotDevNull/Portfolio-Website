@@ -1,0 +1,55 @@
+    <section class="portfolio-section cvstyle-section" id="nexus-logistics-section">
+        <div class="cvstyle-actions-float">
+            <a href="https://github.com/PilotDevNull/Multi-Threaded-Inventory-Management-System---COMP315-Project" target="_blank" class="overlay-header__btn" title="View on GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <button class="overlay-header__btn close-portfolio" id="close-nexus-logistics" aria-label="Back to projects">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="cvstyle-outer">
+            <div class="cvstyle-container" style="--accent:#E35B2D;">
+                <div class="cvstyle-sidebar">
+                    <img class="cvstyle-artwork" src="{{ site.baseurl }}/images/projects/nexus-logistics-inside.jpg" alt="Nexus Logistics artwork">
+
+                    <div class="cvstyle-sidebar-divider"></div>
+
+                    <h3 class="cvstyle-sidebar-heading">Technologies</h3>
+                    <ul class="cvstyle-sidebar-list">
+                        <li>C++17</li>
+                        <li>std::thread &amp; Condition Variables</li>
+                        <li>STL (map, queue, vector)</li>
+                        <li>Smart Pointers (shared_ptr, unique_ptr)</li>
+                        <li>Qt6 (bonus GUI)</li>
+                        <li>CSV / Data Persistence</li>
+                    </ul>
+                </div>
+
+                <div class="cvstyle-main">
+                    <h1 class="cvstyle-title">Nexus Logistics</h1>
+                    <h2 class="cvstyle-subtitle">Multi-Threaded Inventory &amp; Order Processing System</h2>
+                    <div class="cvstyle-meta">COMP315 Group Project &middot; Group Twelve Software Solutions LTD &middot; Team of 7 &middot; Project Lead</div>
+
+                    <div class="cvstyle-body">
+                        <p>A high-performance C++ system built for a fictional client, Nexus Logistics, to centralise inventory and order processing across 5 warehouses that had previously each run their own inconsistent management system. The design follows a producer-consumer model: five warehouse threads load orders into a shared queue, then a user-selected number of worker threads (1-32) drain and fulfil them concurrently against a central inventory.</p>
+
+                        <h4 class="cvstyle-subhead">My contribution</h4>
+                        <p>I led the project and was responsible for the high-level system design: the overall producer-consumer architecture and how the OrderPool, InventorySystem and thread pipeline fit together. I then built the entire CLI: the full 9-option menu, every product/search/sort sub-menu, and the input-validation layer (safe int/double readers that recover cleanly from bad input instead of leaving <code>cin</code> in a broken state). Together these cover all the user-facing flow that sits on top of the class hierarchy the rest of the team designed.</p>
+                        <p>I also took the AnalyticsManager through a full overhaul, from a handful of basic totals into a proper reporting engine: 18 metrics across global and per-warehouse scope (revenue, lost revenue, best-selling item, and category/type breakdowns of revenue, quantity, failure rate and average price), each exportable to its own CSV for Excel/Power&nbsp;BI, all runnable from a dedicated Analytics sub-menu I added to the CLI.</p>
+
+                        <h4 class="cvstyle-subhead">System highlights</h4>
+                        <ul>
+                            <li>An abstract <code>Product</code> base class with <code>Taxable</code>, <code>Discounted</code> and <code>Standard</code> subclasses, using virtual functions so pricing logic resolves correctly through a <code>shared_ptr&lt;Product&gt;</code> at runtime.</li>
+                            <li>Thread safety via a coarse-grained inventory mutex, a mutex + condition variable on the order queue (so workers sleep instead of busy-waiting), and <code>std::atomic&lt;int&gt;</code> for lock-free order-ID generation.</li>
+                            <li>A bonus Qt6 GUI (dashboard, inventory, analytics, orders) layered on top of the CLI backend through an adapter, so both interfaces share the same core logic.</li>
+                            <li>Verified deadlock-free under test: final stock totals matched expected values exactly across every run at up to 32 concurrent workers.</li>
+                        </ul>
+
+                        <h4 class="cvstyle-subhead">Measured performance</h4>
+                        <p>Processing 1,300 orders across a 999-product, 11-category catalogue scaled from ~20,000&nbsp;ms on a single thread down to ~650&nbsp;ms at 32 threads (a ~30&times; speedup) before plateauing as inventory-mutex contention became the bottleneck.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

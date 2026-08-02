@@ -1,0 +1,53 @@
+{% assign projects = site.data.cv-data.projects %}
+{% if projects %}
+<section class="section projects-section">
+
+  <h2 class="section-title">
+    <span class="fa-stack fa-xs">
+      <i class="fas fa-circle fa-stack-2x"></i>
+      <i class="fas fa-archive fa-stack-1x fa-inverse"></i>
+    </span>
+    {{ projects.title }}
+  </h2>
+
+  {% if projects.intro %}
+  <div class="intro">
+      <p>{{ projects.intro }}</p>
+  </div><!--//intro-->
+  {% endif %}
+
+  {% for project in projects.assignments %}
+    <div class="item">
+
+      <div class="upper-row">
+        <span class="project-title">
+          {% if project.link %}
+          <a href="{{ project.link }}" target="_blank">{{ project.title }}</a>
+          {% else %}
+          {{ project.title }}
+          {% endif %}
+        </span>
+        {% if project.link %}
+        <a class="project-github-link" href="{{ project.link }}" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        {% endif %}
+      </div><!--//upper-row-->
+
+      {% if project.tech %}
+      <div class="project-tech">{{ project.tech }}</div>
+      {% endif %}
+
+      {% if project.tagline %}
+      <div class="project-tagline">{{ project.tagline }}</div>
+      {% endif %}
+
+      {% if project.details %}
+      <div class="details">
+        {{ project.details | markdownify }}
+      </div><!--//details-->
+      {% endif %}
+
+    </div><!--//item-->
+  {% endfor %}
+
+</section><!--//section-->
+{% endif %}

@@ -1,0 +1,70 @@
+    <div class="video-background">
+        <video id="header-video" autoplay muted loop playsinline
+            poster="{{ site.baseurl }}/images/fallback.webp">
+            <source src="{{ site.baseurl }}/images/bgv.mp4" type="video/mp4">
+            <img src="{{ site.baseurl }}/images/fallback.webp" alt="Fallback background image">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+    
+    <header class="panel-cover">
+        <div class="panel-main">
+            <div class="panel-main__inner panel-inverted">
+                <div class="panel-main__content">
+                    <div class="content-container">
+                        <img src="{{ site.baseurl }}{{ site.profilepic }}" class="user-image" alt="My Profile Photo">
+                        
+                        <h1 class="panel-cover__title panel-title">{{ site.title }}</h1>
+                        
+                        <hr class="panel-cover__divider">
+                        
+                        <p class="panel-cover__description">Software Engineer &bull; IT Support Technician &bull; Computer Science Student</p>
+                        
+                        <hr class="panel-cover__divider panel-cover__divider--secondary">
+
+                        <div class="action-buttons">
+                            <a href="#" class="action-btn resume-btn" id="show-resume">
+                                <i class="fas fa-file-alt"></i> Detailed CV
+                            </a>
+                            <a href="#" class="action-btn cover-letter-btn" id="show-cover-letter">
+                                <i class="fas fa-user"></i> About Me
+                            </a>
+                            <a href="#" class="action-btn portfolio-btn" id="show-portfolio">
+                                <i class="fas fa-briefcase"></i> Portfolio
+                            </a>
+                            <a href="{{ site.baseurl }}/files/Jawad_Kachbal_CV.pdf" class="action-btn download-cv-btn" download="Jawad_Kachbal_CV.pdf">
+                                <i class="fas fa-download"></i> Download CV
+                            </a>
+                        </div>
+
+                        <div class="navigation-wrapper">
+                            <nav class="cover-navigation navigation--social">
+                                <ul class="navigation">
+                                    <li class="navigation__item">
+                                        <a href="https://github.com/PilotDevNull" title="PilotDevNull on GitHub" target="_blank">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                    </li>
+                                    <li class="navigation__item">
+                                        <a href="https://www.linkedin.com/in/jawadkachbal" title="Jawad Kachbal on LinkedIn" target="_blank">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                    <li class="navigation__item">
+                                        <a href="mailto:jawadkachbal@outlook.com" title="Email jawadkachbal@outlook.com" target="_blank">
+                                            <i class="fas fa-envelope"></i>
+                                        </a>
+                                    </li>
+                                    <li class="navigation__item">
+                                        <a href="tel:+27658770115" title="Call +27 65 877 0115" target="_blank">
+                                            <i class="fas fa-phone"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>

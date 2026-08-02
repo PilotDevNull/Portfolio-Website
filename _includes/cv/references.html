@@ -1,0 +1,18 @@
+{% assign references = site.data.cv-data.references %}
+{% if references %}
+<div class="references-container container-block">
+  <h2 class="container-block-title">
+    {{ references.title }}
+  </h2>
+  {% for ref in references.list %}
+  <div class="ref-item">
+    <div class="ref-name">{{ ref.name }}</div>
+    {% if ref.role %}<div class="ref-role">{{ ref.role }}</div>{% endif %}
+    <div class="ref-contact">
+      {% if ref.email %}<a href="mailto:{{ ref.email }}">{{ ref.email }}</a>{% endif %}
+      {% if ref.note %}<br>{{ ref.note }}{% endif %}
+    </div>
+  </div><!--//ref-item-->
+  {% endfor %}
+</div><!--//references-container-->
+{% endif %}

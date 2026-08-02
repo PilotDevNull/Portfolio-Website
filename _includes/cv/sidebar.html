@@ -1,0 +1,30 @@
+{% assign sidebar = site.data.cv-data.sidebar %}
+<div class="sidebar-wrapper">
+
+  <div class="profile-container">
+
+    {% if sidebar.avatar %}
+    <img class="avatar" src="{{ site.baseurl }}/assets/images/{{ sidebar.avatar }}" alt="profile picture" />
+    {% endif %}
+
+    {% if sidebar.quote %}
+    <p class="quote">&ldquo;{{ sidebar.quote }}&rdquo;</p>
+    {% endif %}
+
+  </div><!--//profile-container-->
+
+  {% include cv/contact.html %}
+
+  {% include cv/profile-sidebar.html %}
+
+  {% if sidebar.education %}
+    {% include cv/education.html %}
+  {% endif %}
+
+  {% include cv/skills-sidebar.html %}
+
+  {% include cv/language.html %}
+
+  {% include cv/references.html %}
+
+</div><!--//sidebar-wrapper-->

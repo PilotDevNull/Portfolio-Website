@@ -1,0 +1,33 @@
+<head>
+  <title>{{ page.title | default: site.title }}: Detailed CV</title>
+
+  <!-- Meta -->
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#0b5294">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ site.description | default: 'Detailed CV' }}">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{{ site.baseurl }}/images/favicons/favicon.ico">
+
+  <!-- Plugins CSS -->
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/plugins/font-awesome/css/all.css">
+
+  <!-- Theme CSS -->
+  <link id="theme-style" rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css?{{ site.time | date: '%s%N' }}">
+
+  <script>
+    (function () {
+      if (new URLSearchParams(window.location.search).get('embed') === '1') {
+        document.documentElement.classList.add('is-embedded');
+      }
+    })();
+  </script>
+  <style>
+    html.is-embedded .back-to-portfolio-button,
+    html.is-embedded .download-button {
+      display: none !important;
+    }
+  </style>
+</head>

@@ -1,0 +1,17 @@
+/* Jawad CV variables - matched to the original PDF resume palette */
+$theme-color: #0b5294; // navy blue (name / headings)
+$text-color: #222831;
+$text-color-secondary: #444d56;
+$text-grey: #6b7280;
+$divider: #e3e8d8;
+$lighter-grey: #ccc;
+$darker-grey: #666;
+$smoky-white: #f7f8f2;
+$heart: #fb866a;
+
+// CV-specific accent colors, used in _base.scss overrides
+$sidebar-bg: #edf3db; // pale yellow-green sidebar
+$sidebar-text: #16324a; // dark navy body text on sidebar
+$accent-red: #d9534f; // section title red
+$accent-gold: #ffc000; // bullet accent
+$accent-teal: #0f8c8c; // tagline teal

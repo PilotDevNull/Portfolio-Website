@@ -1,0 +1,55 @@
+    <section class="portfolio-section cvstyle-section" id="nlp-sentiment-section">
+        <div class="cvstyle-actions-float">
+            <a href="https://github.com/PilotDevNull/Performance-Analysis-of-Generational-NLP-Based-Text-Classification-Algorithms---COMP316-Project" target="_blank" class="overlay-header__btn" title="View on GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <button class="overlay-header__btn close-portfolio" id="close-nlp-sentiment" aria-label="Back to projects">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="cvstyle-outer">
+            <div class="cvstyle-container" style="--accent:#345B89;">
+                <div class="cvstyle-sidebar">
+                    <img class="cvstyle-artwork" src="{{ site.baseurl }}/images/projects/nlp-sentiment-inside.jpg" alt="NLP Sentiment Classification artwork">
+
+                    <div class="cvstyle-sidebar-divider"></div>
+
+                    <h3 class="cvstyle-sidebar-heading">Technologies</h3>
+                    <ul class="cvstyle-sidebar-list">
+                        <li>Python</li>
+                        <li>PyTorch</li>
+                        <li>HuggingFace Transformers</li>
+                        <li>scikit-learn</li>
+                        <li>Steam Web API</li>
+                        <li>pandas</li>
+                        <li>NLTK / langdetect</li>
+                    </ul>
+                </div>
+
+                <div class="cvstyle-main">
+                    <h1 class="cvstyle-title">NLP Sentiment Classification</h1>
+                    <h2 class="cvstyle-subtitle">Naive Bayes vs BiLSTM vs BERT</h2>
+                    <div class="cvstyle-meta">COMP316 Group Project &middot; The Steam Curators &middot; Team of 3 &middot; Project Lead</div>
+
+                    <div class="cvstyle-body">
+                        <p>A head-to-head comparison of three generations of NLP text classifiers (a traditional statistical model, a recurrent deep-learning model, and a pre-trained transformer) on the same binary sentiment task: predicting whether a Steam game review is Recommended or Not Recommended.</p>
+
+                        <h4 class="cvstyle-subhead">My contribution</h4>
+                        <p>I led the project and, in addition to training our BERT model, built the entire data pipeline that fed all three models (extraction, cleaning, balancing and splitting) as a standalone notebook the rest of the team's model notebooks all pointed at, so every model trained and tested on identical data.</p>
+                        <p><strong>Extraction:</strong> Steam's API caps each request at 100 reviews and paginates with a cursor rather than an offset, so I wrote a loop that walks that cursor per game across 100 selected App&nbsp;IDs, targeting 500 positive and 500 negative reviews each. I collected by class as I went, not after the fact, because some games skew heavily positive and pulling reviews blind would have starved the negative class. Requests are rate-limited with <code>time.sleep()</code> to avoid throttling, and every write checks Steam's own review ID before saving, so re-running the script after a timeout or crash never reintroduces a duplicate.</p>
+                        <p><strong>Cleaning:</strong> the raw pull (~94,900 reviews) needed several passes before it was trustworthy training data: stripping reviews mangled by Steam's profanity filter (which replaces swearing with a symbol that corrupts the surrounding text on read), removing links and spam patterns that carry no sentiment signal, running <code>langdetect</code> per review because Steam's own language tag reflects the client's UI language rather than the review text (this alone cut 21,950 reviews), stripping emojis the tokenisers can't meaningfully use, and de-duplicating by exact text (~18,000 reviews) so the same review couldn't land in both the train and test split and inflate accuracy.</p>
+                        <p><strong>Balancing &amp; splitting:</strong> the cleaned data was balanced to an even 60,000 reviews (30k positive / 30k negative) and split 70:30 with stratification, so class balance held in both the training and test sets.</p>
+                        <p>For my own model, I fine-tuned BERT (bert-base-uncased) with AdamW, a linear warmup schedule and gradient clipping on a 6GB GTX&nbsp;1060, and restored the best-validation-loss checkpoint to counter overfitting after epoch&nbsp;1.</p>
+
+                        <h4 class="cvstyle-subhead">Results</h4>
+                        <ul>
+                            <li>BERT: <strong>88.73%</strong> accuracy, <strong>89.22%</strong> F1, the best of the three, at the cost of ~80 minutes' training time versus 35 seconds for the LSTM and 0.03 seconds for Naive Bayes.</li>
+                            <li>Naive Bayes (84.11% accuracy) and BiLSTM (84.05%) landed almost identically despite very different architectures: Steam reviews are short (median 10 tokens) and lexically driven, which limits how much sequential context modelling actually helps.</li>
+                            <li>BERT's ~4.6-point F1 lead over both baselines came from its pre-trained contextual representations, which handle negation and phrasing-driven sentiment that a bag-of-words or from-scratch embedding can't.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

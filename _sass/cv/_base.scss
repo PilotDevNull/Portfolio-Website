@@ -1,0 +1,490 @@
+/* ======= Base ======= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: $text-color-secondary;
+  background: $smoky-white;
+  font-size: 14px;
+  padding: 30px;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+a {
+  color: darken($theme-color, 15%);
+  &:hover {
+    text-decoration: underline;
+    color: darken($theme-color, 30%);
+  }
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+p {
+  line-height: 1.5;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  background: $theme-color;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  @include box-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.sidebar-wrapper {
+  grid-column: span 3;
+  order: $sidebar-order;
+  background: $sidebar-bg;
+  color: $sidebar-text;
+  a {
+    color: $theme-color;
+  }
+  .profile-container {
+    padding: 30px 30px 15px;
+    background: transparent;
+    text-align: center;
+    color: $sidebar-text;
+  }
+  .name {
+    font-size: 32px;
+    font-weight: 900;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: $theme-color;
+    font-style: italic;
+  }
+  .tagline {
+    color: rgba(22, 50, 74, 0.75);
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .profile {
+    margin-bottom: 15px;
+  }
+
+  .avatar {
+    //used for profile image
+    max-width: 110px;
+    margin-bottom: 15px;
+    border: 3px solid #fff;
+    border-radius: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  .quote {
+    font-size: 12.5px;
+    font-style: italic;
+    line-height: 1.5;
+    color: rgba(22, 50, 74, 0.8);
+    margin-bottom: 0;
+  }
+  .contact-list {
+    .fas,
+    .fab,
+    .far {
+      margin-right: 5px;
+      font-size: 16px;
+      vertical-align: middle;
+      color: $accent-gold;
+    }
+    li {
+      margin-bottom: 15px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .container-block {
+    padding: 22px 30px;
+    border-top: 1px solid rgba(11, 82, 148, 0.12);
+  }
+  .container-block-title {
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 700;
+    color: $theme-color;
+    margin-top: 0;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+  }
+  .degree {
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+  .education-container {
+    .item {
+      margin-bottom: 15px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    .sidebar-edu-details {
+      font-size: 12.5px;
+      line-height: 1.45;
+      color: rgba(22, 50, 74, 0.75);
+      margin-top: 4px;
+      p { margin: 0 0 6px; }
+    }
+    .meta {
+      color: rgba(22, 50, 74, 0.7);
+      font-weight: 500;
+      margin-bottom: 0px;
+      margin-top: 0;
+    }
+    .time {
+      color: rgba(22, 50, 74, 0.6);
+      font-weight: 500;
+      margin-bottom: 0px;
+    }
+  }
+  .languages-container {
+    .lang-desc {
+      color: rgba(22, 50, 74, 0.6);
+    }
+  }
+
+  .languages-list {
+    margin-bottom: 0;
+    li {
+      margin-bottom: 10px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .interests-list {
+    margin-bottom: 0;
+    li {
+      margin-bottom: 10px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // Bulleted skill list (matches original CV's diamond-bullet skill list)
+  .skills-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 10px;
+      font-size: 13.5px;
+      line-height: 1.4;
+      &:last-child { margin-bottom: 0; }
+      &::before {
+        content: "\25C6"; // diamond bullet, like the CV
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: $accent-gold;
+        font-size: 11px;
+      }
+    }
+  }
+
+  .references-container {
+    .ref-name {
+      font-weight: 700;
+      color: $sidebar-text;
+      margin-bottom: 2px;
+    }
+    .ref-role {
+      color: rgba(22, 50, 74, 0.7);
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+    .ref-contact {
+      font-size: 12.5px;
+      a { word-break: break-all; }
+    }
+  }
+}
+
+// Name & tagline header, now at the top of the main content column (matches original CV)
+.name-header {
+  margin-bottom: 40px;
+  .name {
+    font-size: 34px;
+    font-weight: 900;
+    font-style: italic;
+    color: $theme-color;
+    margin: 0 0 8px;
+    letter-spacing: 0.5px;
+  }
+  .tagline {
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: $accent-teal;
+    margin: 0;
+  }
+}
+
+.main-wrapper {
+  grid-column: span 7;
+  order: $resume-order;
+  background: #fff;
+  padding: 60px;
+  .section-title {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 700;
+    color: $accent-red;
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid $accent-red;
+    display: inline-block;
+    .fa-stack { display: none; } // CV headers use plain text, no icon badge
+  }
+  .section {
+    margin-bottom: 60px;
+  }
+
+  .experiences-section,
+  .recommendations-section,
+  .educations-section {
+    .item {
+      margin-bottom: 30px;
+    }
+  }
+  .upper-row,
+  .second-upper-row {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2px;
+    display: flex;
+  }
+  .job-title,
+  .degree,
+  .cert-title,
+  .recommendation-person {
+    color: $text-color;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 500;
+    flex: 75%;
+  }
+
+  .time,
+  .cert-url {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: $text-grey;
+    flex: 25%;
+  }
+  .company,
+  .recommendation-role,
+  .university,
+  .cert-org {
+    margin-bottom: 10px;
+    color: $text-grey;
+  }
+
+  .project-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: darken($theme-color, 5%);
+    a { color: inherit; text-decoration: underline; }
+  }
+  .projects-section {
+    .intro {
+      margin-bottom: 30px;
+    }
+    .item {
+      margin-bottom: 26px;
+      &:last-child { margin-bottom: 0; }
+    }
+    .upper-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      overflow: visible;
+      margin-bottom: 2px;
+    }
+    .project-github-link {
+      font-size: 12.5px;
+      color: $text-grey;
+      white-space: nowrap;
+      margin-left: 10px;
+      i { margin-right: 3px; }
+    }
+    .project-tech {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: $accent-teal;
+      margin-bottom: 8px;
+    }
+    .project-tagline {
+      color: $text-color-secondary;
+      margin-bottom: 8px;
+    }
+  }
+  .oss-section {
+    .intro {
+      margin-bottom: 30px;
+    }
+    .item {
+      margin-bottom: 15px;
+    }
+  }
+
+  .publication-title {
+    font-size: 16px;
+    font-weight: 400;
+    color: $text-color;
+    margin-bottom: 1px;
+  }
+  .publication-authors {
+    font-style: italic;
+    color: $text-grey;
+    margin-bottom: 1px;
+  }
+  .publications-section {
+    .intro {
+      margin-bottom: 30px;
+    }
+    .item {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.skillset {
+  .item {
+    margin-bottom: 15px;
+    overflow: hidden;
+  }
+  .level-title {
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+  .level-bar {
+    height: 12px;
+    background: $smoky-white;
+  }
+  .level-bar-inner {
+    height: 12px;
+    background: lighten($theme-color, 15%);
+  }
+}
+
+.footer {
+  padding-top: 30px;
+  .copyright {
+    line-height: 1.6;
+    color: $text-color-secondary;
+    font-size: 13px;
+  }
+
+  .fa-heart {
+    color: $heart;
+  }
+}
+
+.download-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: $theme-color;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: darken($theme-color, 10%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    color: #fff;
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .fas {
+    margin-right: 5px;
+  }
+}
+
+.back-to-portfolio-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: #fff;
+  color: $theme-color;
+  padding: 8px 15px;
+  border-radius: 4px;
+  border: 1px solid rgba(11, 82, 148, 0.25);
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $sidebar-bg;
+    text-decoration: none;
+    color: $theme-color;
+  }
+
+  .fas {
+    margin-right: 5px;
+  }
+}
