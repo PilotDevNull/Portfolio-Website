@@ -1,0 +1,33 @@
+# Site settings
+title: Jawad Kachbal
+description: 'Software Engineer, IT Support Technician, Computer Science Student'
+url: 'jawadkachbal.com'
+baseurl: ''
+profilepic: '/images/jawad.webp'
+bkimage: '/images/fallback.webp'
+google_analytics: ''
+font_awesome: ''
+
+author:
+  name: 'Jawad Kachbal'
+  email: jawadkachbal@outlook.com
+  github_username:  PilotDevNull
+  linkedin_username:  jawadkachbal
+
+# Build settings
+destination: _site
+markdown: kramdown
+highlighter: rouge
+
+sass:
+    sass_dir: _sass
+    style: compressed
+
+kramdown:
+  # use Github Flavored Markdown
+  input: GFM
+  # do not replace newlines by <br>s
+  hard_wrap: false
+
+#plugins: ['jekyll-paginate']
+exclude: ['README.md', 'screenshot-overview.png']
