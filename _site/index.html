@@ -48,7 +48,7 @@
   <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
   <meta name="theme-color" content="#ffffff">
   
-  <link rel="stylesheet" href="/css/main.css?1785710343227830500">
+  <link rel="stylesheet" href="/css/main.css?1786090428446593400">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="canonical" href="http://localhost:4000/">
   <link rel="alternate" type="application/rss+xml" title="Jawad Kachbal" href="/feed.xml">
@@ -728,20 +728,19 @@
                 overflow-y: auto;
             }
             .cvstyle-sidebar {
-                width: 100%;
-                max-width: 100%;
-                flex-direction: row;
-                justify-content: center;
-                padding: 22px 20px;
-                flex-shrink: 0;
-            }
+            width: 100%;
+            max-width: 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 22px 20px;
+            flex-shrink: 0;
+        }
             .cvstyle-avatar {
                 max-width: 90px;
                 margin-bottom: 0;
             }
-            .cvstyle-quote {
-                display: none;
-            }
+
             .cvstyle-artwork,
             .cvstyle-artwork-placeholder {
                 max-width: 220px;
@@ -2232,6 +2231,7 @@
 
             <div class="portfolio-index-content">
                 <div class="category-grid">
+                    
                     <article class="category-tile" data-target="nexus-logistics-section">
                         <div class="tile-image">
                             <img src="/images/projects/nexus-logistics.jpg" alt="Nexus Logistics">
@@ -2241,7 +2241,7 @@
                             <i class="fas fa-arrow-up-right-from-square"></i>
                         </a>
                     </article>
-
+                    
                     <article class="category-tile" data-target="starlight-carnival-section">
                         <div class="tile-image">
                             <img src="/images/projects/starlight-carnival.jpg" alt="Starlight Carnival">
@@ -2251,7 +2251,7 @@
                             <i class="fas fa-arrow-up-right-from-square"></i>
                         </a>
                     </article>
-
+                    
                     <article class="category-tile" data-target="nlp-sentiment-section">
                         <div class="tile-image">
                             <img src="/images/projects/nlp-sentiment.jpg" alt="NLP Sentiment Classification">
@@ -2261,7 +2261,7 @@
                             <i class="fas fa-arrow-up-right-from-square"></i>
                         </a>
                     </article>
-
+                    
                     <article class="category-tile" data-target="music-square-section">
                         <div class="tile-image">
                             <img src="/images/projects/music-square.jpg" alt="Music Square">
@@ -2271,7 +2271,7 @@
                             <i class="fas fa-arrow-up-right-from-square"></i>
                         </a>
                     </article>
-
+                    
                     <article class="category-tile" data-target="portfolio-website-section">
                         <div class="tile-image">
                             <img src="/images/projects/portfolio-website.jpg" alt="Portfolio Website">
@@ -2281,16 +2281,20 @@
                             <i class="fas fa-arrow-up-right-from-square"></i>
                         </a>
                     </article>
+                    
                 </div>
             </div>
         </div>
     </section>
 
-        <section class="portfolio-section cvstyle-section" id="nexus-logistics-section">
+    
+    <section class="portfolio-section cvstyle-section" id="nexus-logistics-section">
         <div class="cvstyle-actions-float">
+            
             <a href="https://github.com/PilotDevNull/Multi-Threaded-Inventory-Management-System---COMP315-Project" target="_blank" class="overlay-header__btn" title="View on GitHub">
                 <i class="fab fa-github"></i>
             </a>
+            
             <button class="overlay-header__btn close-portfolio" id="close-nexus-logistics" aria-label="Back to projects">
                 <i class="fas fa-times"></i>
             </button>
@@ -2299,18 +2303,28 @@
         <div class="cvstyle-outer">
             <div class="cvstyle-container" style="--accent:#E35B2D;">
                 <div class="cvstyle-sidebar">
-                    <img class="cvstyle-artwork" src="/images/projects/nexus-logistics-inside.jpg" alt="Nexus Logistics artwork">
+                    <picture>
+                        <source media="(max-width: 700px)" srcset="/images/projects/nexus-logistics.jpg">
+                        <img class="cvstyle-artwork" src="/images/projects/nexus-logistics-inside.jpg" alt="Nexus Logistics artwork">
+                    </picture>
 
                     <div class="cvstyle-sidebar-divider"></div>
 
                     <h3 class="cvstyle-sidebar-heading">Technologies</h3>
                     <ul class="cvstyle-sidebar-list">
+                        
                         <li>C++17</li>
+                        
                         <li>std::thread &amp; Condition Variables</li>
+                        
                         <li>STL (map, queue, vector)</li>
+                        
                         <li>Smart Pointers (shared_ptr, unique_ptr)</li>
+                        
                         <li>Qt6 (bonus GUI)</li>
+                        
                         <li>CSV / Data Persistence</li>
+                        
                     </ul>
                 </div>
 
@@ -2322,31 +2336,34 @@
                     <div class="cvstyle-body">
                         <p>A high-performance C++ system built for a fictional client, Nexus Logistics, to centralise inventory and order processing across 5 warehouses that had previously each run their own inconsistent management system. The design follows a producer-consumer model: five warehouse threads load orders into a shared queue, then a user-selected number of worker threads (1-32) drain and fulfil them concurrently against a central inventory.</p>
 
-                        <h4 class="cvstyle-subhead">My contribution</h4>
-                        <p>I led the project and was responsible for the high-level system design: the overall producer-consumer architecture and how the OrderPool, InventorySystem and thread pipeline fit together. I then built the entire CLI: the full 9-option menu, every product/search/sort sub-menu, and the input-validation layer (safe int/double readers that recover cleanly from bad input instead of leaving <code>cin</code> in a broken state). Together these cover all the user-facing flow that sits on top of the class hierarchy the rest of the team designed.</p>
-                        <p>I also took the AnalyticsManager through a full overhaul, from a handful of basic totals into a proper reporting engine: 18 metrics across global and per-warehouse scope (revenue, lost revenue, best-selling item, and category/type breakdowns of revenue, quantity, failure rate and average price), each exportable to its own CSV for Excel/Power&nbsp;BI, all runnable from a dedicated Analytics sub-menu I added to the CLI.</p>
+<h4 class="cvstyle-subhead">My contribution</h4>
+<p>I led the project and was responsible for the high-level system design: the overall producer-consumer architecture and how the OrderPool, InventorySystem and thread pipeline fit together. I then built the entire CLI: the full 9-option menu, every product/search/sort sub-menu, and the input-validation layer (safe int/double readers that recover cleanly from bad input instead of leaving <code>cin</code> in a broken state). Together these cover all the user-facing flow that sits on top of the class hierarchy the rest of the team designed.</p>
+<p>I also took the AnalyticsManager through a full overhaul, from a handful of basic totals into a proper reporting engine: 18 metrics across global and per-warehouse scope (revenue, lost revenue, best-selling item, and category/type breakdowns of revenue, quantity, failure rate and average price), each exportable to its own CSV for Excel/Power&nbsp;BI, all runnable from a dedicated Analytics sub-menu I added to the CLI.</p>
 
-                        <h4 class="cvstyle-subhead">System highlights</h4>
-                        <ul>
-                            <li>An abstract <code>Product</code> base class with <code>Taxable</code>, <code>Discounted</code> and <code>Standard</code> subclasses, using virtual functions so pricing logic resolves correctly through a <code>shared_ptr&lt;Product&gt;</code> at runtime.</li>
-                            <li>Thread safety via a coarse-grained inventory mutex, a mutex + condition variable on the order queue (so workers sleep instead of busy-waiting), and <code>std::atomic&lt;int&gt;</code> for lock-free order-ID generation.</li>
-                            <li>A bonus Qt6 GUI (dashboard, inventory, analytics, orders) layered on top of the CLI backend through an adapter, so both interfaces share the same core logic.</li>
-                            <li>Verified deadlock-free under test: final stock totals matched expected values exactly across every run at up to 32 concurrent workers.</li>
-                        </ul>
+<h4 class="cvstyle-subhead">System highlights</h4>
+<ul>
+  <li>An abstract <code>Product</code> base class with <code>Taxable</code>, <code>Discounted</code> and <code>Standard</code> subclasses, using virtual functions so pricing logic resolves correctly through a <code>shared_ptr&lt;Product&gt;</code> at runtime.</li>
+  <li>Thread safety via a coarse-grained inventory mutex, a mutex + condition variable on the order queue (so workers sleep instead of busy-waiting), and <code>std::atomic&lt;int&gt;</code> for lock-free order-ID generation.</li>
+  <li>A bonus Qt6 GUI (dashboard, inventory, analytics, orders) layered on top of the CLI backend through an adapter, so both interfaces share the same core logic.</li>
+  <li>Verified deadlock-free under test: final stock totals matched expected values exactly across every run at up to 32 concurrent workers.</li>
+</ul>
 
-                        <h4 class="cvstyle-subhead">Measured performance</h4>
-                        <p>Processing 1,300 orders across a 999-product, 11-category catalogue scaled from ~20,000&nbsp;ms on a single thread down to ~650&nbsp;ms at 32 threads (a ~30&times; speedup) before plateauing as inventory-mutex contention became the bottleneck.</p>
+<h4 class="cvstyle-subhead">Measured performance</h4>
+<p>Processing 1,300 orders across a 999-product, 11-category catalogue scaled from ~20,000&nbsp;ms on a single thread down to ~650&nbsp;ms at 32 threads (a ~30&times; speedup) before plateauing as inventory-mutex contention became the bottleneck.</p>
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-        <section class="portfolio-section cvstyle-section" id="starlight-carnival-section">
+    <section class="portfolio-section cvstyle-section" id="starlight-carnival-section">
         <div class="cvstyle-actions-float">
+            
             <a href="https://github.com/PilotDevNull/Starlight-Carnival-Database-Managment-System---COMP306-Project" target="_blank" class="overlay-header__btn" title="View on GitHub">
                 <i class="fab fa-github"></i>
             </a>
+            
             <button class="overlay-header__btn close-portfolio" id="close-starlight-carnival" aria-label="Back to projects">
                 <i class="fas fa-times"></i>
             </button>
@@ -2355,18 +2372,28 @@
         <div class="cvstyle-outer">
             <div class="cvstyle-container" style="--accent:#920394;">
                 <div class="cvstyle-sidebar">
-                    <img class="cvstyle-artwork" src="/images/projects/starlight-carnival-inside.jpg" alt="Starlight Carnival artwork">
+                    <picture>
+                        <source media="(max-width: 700px)" srcset="/images/projects/starlight-carnival.jpg">
+                        <img class="cvstyle-artwork" src="/images/projects/starlight-carnival-inside.jpg" alt="Starlight Carnival artwork">
+                    </picture>
 
                     <div class="cvstyle-sidebar-divider"></div>
 
                     <h3 class="cvstyle-sidebar-heading">Technologies</h3>
                     <ul class="cvstyle-sidebar-list">
+                        
                         <li>Java &amp; Swing</li>
+                        
                         <li>Custom Graphics2D Animation</li>
+                        
                         <li>MySQL 8</li>
+                        
                         <li>JDBC</li>
+                        
                         <li>Views, Triggers &amp; Stored Procedures</li>
+                        
                         <li>Role-Based Access Control</li>
+                        
                     </ul>
                 </div>
 
@@ -2378,30 +2405,33 @@
                     <div class="cvstyle-body">
                         <p>A full-stack database application modelling the day-to-day operations of a travelling amusement park (customer admissions and loyalty cards, employee rostering, ride/show/stall management, maintenance logging and financial transactions), all served through a role-based Java Swing front end over MySQL.</p>
 
-                        <h4 class="cvstyle-subhead">My contribution</h4>
-                        <p>I planned the business scenario that the whole database was modelled from: working out how a travelling carnival's customer admissions, loyalty smart cards, employee roles, attractions and financial transactions actually relate to one another, before any table existed. That scenario became the spec the EERD and schema were built against.</p>
-                        <p>I then built the entire Java Swing front end and its visual design. Login is a custom-painted screen I wrote directly on <code>Graphics2D</code>: a drifting starfield of 180 twinkling stars, 18 looping carnival &ldquo;sparks&rdquo;, and a slowly shifting dual-tone gradient behind a rounded glass card, all hand-animated on a Swing <code>Timer</code>, no game engine or extra library involved. On top of that I built the generic <code>EntityConfig</code>-driven CRUD engine that every other screen is built from, the role-based routing between the four account types, the four-step Sales pipeline, and the Reports screen.</p>
+<h4 class="cvstyle-subhead">My contribution</h4>
+<p>I planned the business scenario that the whole database was modelled from: working out how a travelling carnival's customer admissions, loyalty smart cards, employee roles, attractions and financial transactions actually relate to one another, before any table existed. That scenario became the spec the EERD and schema were built against.</p>
+<p>I then built the entire Java Swing front end and its visual design. Login is a custom-painted screen I wrote directly on <code>Graphics2D</code>: a drifting starfield of 180 twinkling stars, 18 looping carnival &ldquo;sparks&rdquo;, and a slowly shifting dual-tone gradient behind a rounded glass card, all hand-animated on a Swing <code>Timer</code>, no game engine or extra library involved. On top of that I built the generic <code>EntityConfig</code>-driven CRUD engine that every other screen is built from, the role-based routing between the four account types, the four-step Sales pipeline, and the Reports screen.</p>
 
-                        <h4 class="cvstyle-subhead">System highlights</h4>
-                        <ul>
-                            <li>22 tables, 3 views, 2 stored procedures and a full set of triggers, seeded with sample data and four dedicated MySQL accounts (admin, sales, maintenance, guest) that each open a different role-specific screen.</li>
-                            <li>A generic CRUD engine: every entity is declared once as metadata (table, fields, dropdowns, foreign-key bindings, subtype rules) and a single <code>EntityCrudPanel</code> builds the form, grid and SQL for all 21 entities: adding a new entity is a metadata entry, not a new screen.</li>
-                            <li>A four-step Sales pipeline (identify customer &rarr; log admission &rarr; issue an access pass &rarr; summary) where the admission and pass insert as one atomic transaction, so a half-completed sale is never left behind.</li>
-                            <li>Five concurrent SwingWorker-backed reports joining three or more tables each (revenue by location, ride maintenance cost, stall stock, staff distribution and top customer spend), so the UI never blocks while they run.</li>
-                        </ul>
+<h4 class="cvstyle-subhead">System highlights</h4>
+<ul>
+  <li>22 tables, 3 views, 2 stored procedures and a full set of triggers, seeded with sample data and four dedicated MySQL accounts (admin, sales, maintenance, guest) that each open a different role-specific screen.</li>
+  <li>A generic CRUD engine: every entity is declared once as metadata (table, fields, dropdowns, foreign-key bindings, subtype rules) and a single <code>EntityCrudPanel</code> builds the form, grid and SQL for all 21 entities: adding a new entity is a metadata entry, not a new screen.</li>
+  <li>A four-step Sales pipeline (identify customer &rarr; log admission &rarr; issue an access pass &rarr; summary) where the admission and pass insert as one atomic transaction, so a half-completed sale is never left behind.</li>
+  <li>Five concurrent SwingWorker-backed reports joining three or more tables each (revenue by location, ride maintenance cost, stall stock, staff distribution and top customer spend), so the UI never blocks while they run.</li>
+</ul>
 
-                        <p>All queries are parameterised throughout, and MySQL's own per-role privileges provide a second line of defence: even a bug in the Swing client can't issue a statement the account isn't allowed to run.</p>
+<p>All queries are parameterised throughout, and MySQL's own per-role privileges provide a second line of defence: even a bug in the Swing client can't issue a statement the account isn't allowed to run.</p>
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-        <section class="portfolio-section cvstyle-section" id="nlp-sentiment-section">
+    <section class="portfolio-section cvstyle-section" id="nlp-sentiment-section">
         <div class="cvstyle-actions-float">
+            
             <a href="https://github.com/PilotDevNull/Performance-Analysis-of-Generational-NLP-Based-Text-Classification-Algorithms---COMP316-Project" target="_blank" class="overlay-header__btn" title="View on GitHub">
                 <i class="fab fa-github"></i>
             </a>
+            
             <button class="overlay-header__btn close-portfolio" id="close-nlp-sentiment" aria-label="Back to projects">
                 <i class="fas fa-times"></i>
             </button>
@@ -2410,19 +2440,30 @@
         <div class="cvstyle-outer">
             <div class="cvstyle-container" style="--accent:#345B89;">
                 <div class="cvstyle-sidebar">
-                    <img class="cvstyle-artwork" src="/images/projects/nlp-sentiment-inside.jpg" alt="NLP Sentiment Classification artwork">
+                    <picture>
+                        <source media="(max-width: 700px)" srcset="/images/projects/nlp-sentiment.jpg">
+                        <img class="cvstyle-artwork" src="/images/projects/nlp-sentiment-inside.jpg" alt="NLP Sentiment Classification artwork">
+                    </picture>
 
                     <div class="cvstyle-sidebar-divider"></div>
 
                     <h3 class="cvstyle-sidebar-heading">Technologies</h3>
                     <ul class="cvstyle-sidebar-list">
+                        
                         <li>Python</li>
+                        
                         <li>PyTorch</li>
+                        
                         <li>HuggingFace Transformers</li>
+                        
                         <li>scikit-learn</li>
+                        
                         <li>Steam Web API</li>
+                        
                         <li>pandas</li>
+                        
                         <li>NLTK / langdetect</li>
+                        
                     </ul>
                 </div>
 
@@ -2434,30 +2475,33 @@
                     <div class="cvstyle-body">
                         <p>A head-to-head comparison of three generations of NLP text classifiers (a traditional statistical model, a recurrent deep-learning model, and a pre-trained transformer) on the same binary sentiment task: predicting whether a Steam game review is Recommended or Not Recommended.</p>
 
-                        <h4 class="cvstyle-subhead">My contribution</h4>
-                        <p>I led the project and, in addition to training our BERT model, built the entire data pipeline that fed all three models (extraction, cleaning, balancing and splitting) as a standalone notebook the rest of the team's model notebooks all pointed at, so every model trained and tested on identical data.</p>
-                        <p><strong>Extraction:</strong> Steam's API caps each request at 100 reviews and paginates with a cursor rather than an offset, so I wrote a loop that walks that cursor per game across 100 selected App&nbsp;IDs, targeting 500 positive and 500 negative reviews each. I collected by class as I went, not after the fact, because some games skew heavily positive and pulling reviews blind would have starved the negative class. Requests are rate-limited with <code>time.sleep()</code> to avoid throttling, and every write checks Steam's own review ID before saving, so re-running the script after a timeout or crash never reintroduces a duplicate.</p>
-                        <p><strong>Cleaning:</strong> the raw pull (~94,900 reviews) needed several passes before it was trustworthy training data: stripping reviews mangled by Steam's profanity filter (which replaces swearing with a symbol that corrupts the surrounding text on read), removing links and spam patterns that carry no sentiment signal, running <code>langdetect</code> per review because Steam's own language tag reflects the client's UI language rather than the review text (this alone cut 21,950 reviews), stripping emojis the tokenisers can't meaningfully use, and de-duplicating by exact text (~18,000 reviews) so the same review couldn't land in both the train and test split and inflate accuracy.</p>
-                        <p><strong>Balancing &amp; splitting:</strong> the cleaned data was balanced to an even 60,000 reviews (30k positive / 30k negative) and split 70:30 with stratification, so class balance held in both the training and test sets.</p>
-                        <p>For my own model, I fine-tuned BERT (bert-base-uncased) with AdamW, a linear warmup schedule and gradient clipping on a 6GB GTX&nbsp;1060, and restored the best-validation-loss checkpoint to counter overfitting after epoch&nbsp;1.</p>
+<h4 class="cvstyle-subhead">My contribution</h4>
+<p>I led the project and, in addition to training our BERT model, built the entire data pipeline that fed all three models (extraction, cleaning, balancing and splitting) as a standalone notebook the rest of the team's model notebooks all pointed at, so every model trained and tested on identical data.</p>
+<p><strong>Extraction:</strong> Steam's API caps each request at 100 reviews and paginates with a cursor rather than an offset, so I wrote a loop that walks that cursor per game across 100 selected App&nbsp;IDs, targeting 500 positive and 500 negative reviews each. I collected by class as I went, not after the fact, because some games skew heavily positive and pulling reviews blind would have starved the negative class. Requests are rate-limited with <code>time.sleep()</code> to avoid throttling, and every write checks Steam's own review ID before saving, so re-running the script after a timeout or crash never reintroduces a duplicate.</p>
+<p><strong>Cleaning:</strong> the raw pull (~94,900 reviews) needed several passes before it was trustworthy training data: stripping reviews mangled by Steam's profanity filter (which replaces swearing with a symbol that corrupts the surrounding text on read), removing links and spam patterns that carry no sentiment signal, running <code>langdetect</code> per review because Steam's own language tag reflects the client's UI language rather than the review text (this alone cut 21,950 reviews), stripping emojis the tokenisers can't meaningfully use, and de-duplicating by exact text (~18,000 reviews) so the same review couldn't land in both the train and test split and inflate accuracy.</p>
+<p><strong>Balancing &amp; splitting:</strong> the cleaned data was balanced to an even 60,000 reviews (30k positive / 30k negative) and split 70:30 with stratification, so class balance held in both the training and test sets.</p>
+<p>For my own model, I fine-tuned BERT (bert-base-uncased) with AdamW, a linear warmup schedule and gradient clipping on a 6GB GTX&nbsp;1060, and restored the best-validation-loss checkpoint to counter overfitting after epoch&nbsp;1.</p>
 
-                        <h4 class="cvstyle-subhead">Results</h4>
-                        <ul>
-                            <li>BERT: <strong>88.73%</strong> accuracy, <strong>89.22%</strong> F1, the best of the three, at the cost of ~80 minutes' training time versus 35 seconds for the LSTM and 0.03 seconds for Naive Bayes.</li>
-                            <li>Naive Bayes (84.11% accuracy) and BiLSTM (84.05%) landed almost identically despite very different architectures: Steam reviews are short (median 10 tokens) and lexically driven, which limits how much sequential context modelling actually helps.</li>
-                            <li>BERT's ~4.6-point F1 lead over both baselines came from its pre-trained contextual representations, which handle negation and phrasing-driven sentiment that a bag-of-words or from-scratch embedding can't.</li>
-                        </ul>
+<h4 class="cvstyle-subhead">Results</h4>
+<ul>
+  <li>BERT: <strong>88.73%</strong> accuracy, <strong>89.22%</strong> F1, the best of the three, at the cost of ~80 minutes' training time versus 35 seconds for the LSTM and 0.03 seconds for Naive Bayes.</li>
+  <li>Naive Bayes (84.11% accuracy) and BiLSTM (84.05%) landed almost identically despite very different architectures: Steam reviews are short (median 10 tokens) and lexically driven, which limits how much sequential context modelling actually helps.</li>
+  <li>BERT's ~4.6-point F1 lead over both baselines came from its pre-trained contextual representations, which handle negation and phrasing-driven sentiment that a bag-of-words or from-scratch embedding can't.</li>
+</ul>
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-        <section class="portfolio-section cvstyle-section" id="music-square-section">
+    <section class="portfolio-section cvstyle-section" id="music-square-section">
         <div class="cvstyle-actions-float">
+            
             <a href="https://github.com/PilotDevNull/Music-Square-Mood-based-Music-Player" target="_blank" class="overlay-header__btn" title="View on GitHub">
                 <i class="fab fa-github"></i>
             </a>
+            
             <button class="overlay-header__btn close-portfolio" id="close-music-square" aria-label="Back to projects">
                 <i class="fas fa-times"></i>
             </button>
@@ -2466,18 +2510,28 @@
         <div class="cvstyle-outer">
             <div class="cvstyle-container" style="--accent:#CB727D;">
                 <div class="cvstyle-sidebar">
-                    <img class="cvstyle-artwork" src="/images/projects/music-square-inside.jpg" alt="Music Square artwork">
+                    <picture>
+                        <source media="(max-width: 700px)" srcset="/images/projects/music-square.jpg">
+                        <img class="cvstyle-artwork" src="/images/projects/music-square-inside.jpg" alt="Music Square artwork">
+                    </picture>
 
                     <div class="cvstyle-sidebar-divider"></div>
 
                     <h3 class="cvstyle-sidebar-heading">Technologies</h3>
                     <ul class="cvstyle-sidebar-list">
+                        
                         <li>Python</li>
+                        
                         <li>librosa</li>
+                        
                         <li>Flask</li>
+                        
                         <li>mutagen / soundfile</li>
+                        
                         <li>JavaScript &amp; Canvas</li>
+                        
                         <li>Cache Storage API</li>
+                        
                     </ul>
                 </div>
 
@@ -2489,31 +2543,35 @@
                     <div class="cvstyle-body">
                         <p>A local player for FLAC libraries, inspired by the old Samsung TouchWiz Music Square, except instead of relying on genre tags or an online lookup, it plots every track by actually analysing the audio itself. Everything runs locally: no files, tags or audio ever leave the machine.</p>
 
-                        <h4 class="cvstyle-subhead">How the mood coordinates work</h4>
-                        <p>For each track, <code>librosa</code> extracts tempo, loudness (RMS), onset rate, spectral centroid, and a tonality &ldquo;mode score&rdquo; from a chroma vector compared against major/minor key profiles. These five raw features are then z-scored across the <em>whole library</em> (so &ldquo;loud&rdquo; or &ldquo;bright&rdquo; is always relative to your own collection) and combined into two weighted axes: arousal (tempo-led) for the x-position and valence (tonality-led) for the y-position, each compressed to -1..+1 with a tanh squash.</p>
+<h4 class="cvstyle-subhead">How the mood coordinates work</h4>
+<p>For each track, <code>librosa</code> extracts tempo, loudness (RMS), onset rate, spectral centroid, and a tonality &ldquo;mode score&rdquo; from a chroma vector compared against major/minor key profiles. These five raw features are then z-scored across the <em>whole library</em> (so &ldquo;loud&rdquo; or &ldquo;bright&rdquo; is always relative to your own collection) and combined into two weighted axes: arousal (tempo-led) for the x-position and valence (tonality-led) for the y-position, each compressed to -1..+1 with a tanh squash.</p>
 
-                        <h4 class="cvstyle-subhead">Interface</h4>
-                        <ul>
-                            <li>Click anywhere on the square to drop a probe and build a mix from the nearest-sounding tracks, or drag to sweep a path through a sequence of moods.</li>
-                            <li>Tracks render as their own album art clipped to a circle; the whole UI takes its colour from whatever's playing, sampling the art down to a tiny canvas and deriving a background wash and accent palette from it, Material-You style.</li>
-                            <li>A Flask server streams the audio and serves the analysis; the frontend is vanilla JS and Canvas, with art double-cached (server-side and via the browser's Cache Storage API) so reloads are instant.</li>
-                        </ul>
+<h4 class="cvstyle-subhead">Interface</h4>
+<ul>
+  <li>Click anywhere on the square to drop a probe and build a mix from the nearest-sounding tracks, or drag to sweep a path through a sequence of moods.</li>
+  <li>Tracks render as their own album art clipped to a circle; the whole UI takes its colour from whatever's playing, sampling the art down to a tiny canvas and deriving a background wash and accent palette from it, Material-You style.</li>
+  <li>A Flask server streams the audio and serves the analysis; the frontend is vanilla JS and Canvas, with art double-cached (server-side and via the browser's Cache Storage API) so reloads are instant.</li>
+</ul>
 
-                        <p>The analyzer is resumable and parallelised: it samples ~60 seconds per track from ~30% in, skips already-scored files on re-runs, and falls back to a slower crash-isolated mode if a corrupt file would otherwise take down the whole batch.</p>
+<p>The analyzer is resumable and parallelised: it samples ~60 seconds per track from ~30% in, skips already-scored files on re-runs, and falls back to a slower crash-isolated mode if a corrupt file would otherwise take down the whole batch.</p>
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-        <section class="portfolio-section cvstyle-section" id="portfolio-website-section">
+    <section class="portfolio-section cvstyle-section" id="portfolio-website-section">
         <div class="cvstyle-actions-float">
+            
             <a href="https://jawadkachbal.com" target="_blank" class="overlay-header__btn" title="Visit the live site">
                 <i class="fas fa-arrow-up-right-from-square"></i>
             </a>
+            
             <a href="https://github.com/PilotDevNull/Portfolio-Website" target="_blank" class="overlay-header__btn" title="View on GitHub">
                 <i class="fab fa-github"></i>
             </a>
+            
             <button class="overlay-header__btn close-portfolio" id="close-portfolio-website" aria-label="Back to projects">
                 <i class="fas fa-times"></i>
             </button>
@@ -2522,17 +2580,26 @@
         <div class="cvstyle-outer">
             <div class="cvstyle-container" style="--accent:#0b5294;">
                 <div class="cvstyle-sidebar">
-                    <img class="cvstyle-artwork" src="/images/projects/portfolio-website-inside.jpg" alt="Portfolio Website artwork">
+                    <picture>
+                        <source media="(max-width: 700px)" srcset="/images/projects/portfolio-website.jpg">
+                        <img class="cvstyle-artwork" src="/images/projects/portfolio-website-inside.jpg" alt="Portfolio Website artwork">
+                    </picture>
 
                     <div class="cvstyle-sidebar-divider"></div>
 
                     <h3 class="cvstyle-sidebar-heading">Technologies</h3>
                     <ul class="cvstyle-sidebar-list">
+                        
                         <li>Jekyll</li>
+                        
                         <li>SCSS / Sass</li>
+                        
                         <li>Vanilla JavaScript</li>
+                        
                         <li>Font Awesome</li>
+                        
                         <li>GitHub Pages</li>
+                        
                     </ul>
                 </div>
 
@@ -2544,26 +2611,28 @@
                     <div class="cvstyle-body">
                         <p>The site you're looking at right now. A single-page Jekyll portfolio with sliding panels for About Me, Projects and a full Detailed CV, all themed and colour-matched to my actual CV rather than a generic template look.</p>
 
-                        <h4 class="cvstyle-subhead">What it's built on</h4>
-                        <p>Rather than starting from a blank page, I built this on top of two open-source Jekyll templates and reworked both substantially:</p>
-                        <ul>
-                            <li>The overall one-page shell (the sliding panel system, video background and layout grid) started from <strong>jekyll-uno</strong> by Josh Gerdes, as extended into <strong>jekyll-uno-timeline</strong> by Thomas Z&uuml;hlke, both MIT-licensed. Almost none of the original styling remains; the panel system, project carousel, colour theming and CV integration are my own additions on top of that base.</li>
-                            <li>The Detailed CV page is built on the <strong>Orbit</strong> resume/CV template by Xiaoying Riley (<a href="http://themes.3rdwavemedia.com" target="_blank" rel="nofollow">themes.3rdwavemedia.com</a>, Creative&nbsp;Commons&nbsp;Attribution&nbsp;3.0), restructured into the sidebar-plus-main layout you see and recoloured to match my actual paper CV, then embedded into the main site as its own popup panel.</li>
-                            <li>Icons throughout are <strong>Font&nbsp;Awesome&nbsp;Free</strong>. The site is built with Jekyll and hosted on GitHub&nbsp;Pages.</li>
-                        </ul>
+<h4 class="cvstyle-subhead">What it's built on</h4>
+<p>Rather than starting from a blank page, I built this on top of two open-source Jekyll templates and reworked both substantially:</p>
+<ul>
+  <li>The overall one-page shell (the sliding panel system, video background and layout grid) started from <strong>jekyll-uno</strong> by Josh Gerdes, as extended into <strong>jekyll-uno-timeline</strong> by Thomas Z&uuml;hlke, both MIT-licensed. Almost none of the original styling remains; the panel system, project carousel, colour theming and CV integration are my own additions on top of that base.</li>
+  <li>The Detailed CV page is built on the <strong>Orbit</strong> resume/CV template by Xiaoying Riley (<a href="http://themes.3rdwavemedia.com" target="_blank" rel="nofollow">themes.3rdwavemedia.com</a>, Creative&nbsp;Commons&nbsp;Attribution&nbsp;3.0), restructured into the sidebar-plus-main layout you see and recoloured to match my actual paper CV, then embedded into the main site as its own popup panel.</li>
+  <li>Icons throughout are <strong>Font&nbsp;Awesome&nbsp;Free</strong>. The site is built with Jekyll and hosted on GitHub&nbsp;Pages.</li>
+</ul>
 
-                        <h4 class="cvstyle-subhead">What I actually built</h4>
-                        <ul>
-                            <li>A shared sliding-panel system (About&nbsp;Me, Projects grid, and every individual project) with consistent open/close animation, keyboard (Escape) handling, and swipe support on mobile.</li>
-                            <li>The CV page: a from-scratch sidebar-plus-main layout matched to my real CV's colours, with per-project accent colours picked directly from each project's artwork rather than a fixed palette.</li>
-                            <li>The Detailed CV popup embeds the standalone CV page in an iframe so it stays a real, linkable page on its own while still opening in-place like every other panel.</li>
-                            <li>All the copy, project write-ups and colour decisions on the site are mine, iterated over several rounds to fix layout bugs, improve contrast, and keep the design consistent as content was added.</li>
-                        </ul>
+<h4 class="cvstyle-subhead">What I actually built</h4>
+<ul>
+  <li>A shared sliding-panel system (About&nbsp;Me, Projects grid, and every individual project) with consistent open/close animation, keyboard (Escape) handling, and swipe support on mobile.</li>
+  <li>The CV page: a from-scratch sidebar-plus-main layout matched to my real CV's colours, with per-project accent colours picked directly from each project's artwork rather than a fixed palette.</li>
+  <li>The Detailed CV popup embeds the standalone CV page in an iframe so it stays a real, linkable page on its own while still opening in-place like every other panel.</li>
+  <li>All the copy, project write-ups and colour decisions on the site are mine, iterated over several rounds to fix layout bugs, improve contrast, and keep the design consistent as content was added.</li>
+</ul>
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
 
     <script>
@@ -2581,11 +2650,17 @@
             const closePortfolioIndexBtn = document.getElementById('close-portfolio-index');
             const closePortfolioBtn = document.querySelectorAll('.close-portfolio:not(#close-portfolio-index)');
             const portfolioSections = {
+                
                 'nexus-logistics-section': document.getElementById('nexus-logistics-section'),
+                
                 'starlight-carnival-section': document.getElementById('starlight-carnival-section'),
+                
                 'nlp-sentiment-section': document.getElementById('nlp-sentiment-section'),
+                
                 'music-square-section': document.getElementById('music-square-section'),
+                
                 'portfolio-website-section': document.getElementById('portfolio-website-section')
+                
             };
             const portfolioHomeBtns = document.querySelectorAll('.portfolio-home-btn');
             const body = document.body;
@@ -3095,10 +3170,10 @@
     
 
 
-      </div>
 
-      
 
     </div>
+
+    <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "946c2709f5d54394a2f0c4a073ea2909"}'></script><!-- End Cloudflare Web Analytics -->
   </body>
 </html>

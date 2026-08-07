@@ -1,0 +1,192 @@
+# =============================================================================
+# Homepage Projects — add a new project by adding ONE entry below.
+#
+# To add a project:
+#   1. Drop two images into images/projects/ named after your slug:
+#        <slug>.jpg          (grid tile + mobile hero, ~800x600 works well)
+#        <slug>-inside.jpg   (desktop hero image, same crop family)
+#   2. Copy one of the entries below, change the slug, and fill in the fields.
+#   3. Commit. The homepage grid tile AND the detail panel are both generated
+#      automatically from this one entry — no other file needs to change.
+#
+# Field notes:
+#   slug          - lowercase-with-dashes, must be unique, used to build the
+#                   image filenames above and the section id.
+#   accent        - hex color used for the panel's accent theme.
+#   links         - list of buttons shown top-right of the detail panel.
+#                   icon is any Font Awesome class, e.g. fab fa-github,
+#                   fas fa-arrow-up-right-from-square.
+#   technologies  - shown in the sidebar list.
+#   body          - the write-up. Plain HTML. Use <h4 class="cvstyle-subhead">
+#                   for section headings and normal <p>/<ul><li> for the rest
+#                   to match the existing styling.
+# =============================================================================
+
+- slug: nexus-logistics
+  title: Nexus Logistics
+  subtitle: Multi-Threaded Inventory &amp; Order Processing System
+  meta: COMP315 Group Project &middot; Group Twelve Software Solutions LTD &middot; Team of 7 &middot; Project Lead
+  accent: "#E35B2D"
+  links:
+    - href: "https://github.com/PilotDevNull/Multi-Threaded-Inventory-Management-System---COMP315-Project"
+      icon: fab fa-github
+      title: View on GitHub
+  technologies:
+    - "C++17"
+    - "std::thread &amp; Condition Variables"
+    - "STL (map, queue, vector)"
+    - "Smart Pointers (shared_ptr, unique_ptr)"
+    - "Qt6 (bonus GUI)"
+    - "CSV / Data Persistence"
+  body: |
+    <p>A high-performance C++ system built for a fictional client, Nexus Logistics, to centralise inventory and order processing across 5 warehouses that had previously each run their own inconsistent management system. The design follows a producer-consumer model: five warehouse threads load orders into a shared queue, then a user-selected number of worker threads (1-32) drain and fulfil them concurrently against a central inventory.</p>
+
+    <h4 class="cvstyle-subhead">My contribution</h4>
+    <p>I led the project and was responsible for the high-level system design: the overall producer-consumer architecture and how the OrderPool, InventorySystem and thread pipeline fit together. I then built the entire CLI: the full 9-option menu, every product/search/sort sub-menu, and the input-validation layer (safe int/double readers that recover cleanly from bad input instead of leaving <code>cin</code> in a broken state). Together these cover all the user-facing flow that sits on top of the class hierarchy the rest of the team designed.</p>
+    <p>I also took the AnalyticsManager through a full overhaul, from a handful of basic totals into a proper reporting engine: 18 metrics across global and per-warehouse scope (revenue, lost revenue, best-selling item, and category/type breakdowns of revenue, quantity, failure rate and average price), each exportable to its own CSV for Excel/Power&nbsp;BI, all runnable from a dedicated Analytics sub-menu I added to the CLI.</p>
+
+    <h4 class="cvstyle-subhead">System highlights</h4>
+    <ul>
+      <li>An abstract <code>Product</code> base class with <code>Taxable</code>, <code>Discounted</code> and <code>Standard</code> subclasses, using virtual functions so pricing logic resolves correctly through a <code>shared_ptr&lt;Product&gt;</code> at runtime.</li>
+      <li>Thread safety via a coarse-grained inventory mutex, a mutex + condition variable on the order queue (so workers sleep instead of busy-waiting), and <code>std::atomic&lt;int&gt;</code> for lock-free order-ID generation.</li>
+      <li>A bonus Qt6 GUI (dashboard, inventory, analytics, orders) layered on top of the CLI backend through an adapter, so both interfaces share the same core logic.</li>
+      <li>Verified deadlock-free under test: final stock totals matched expected values exactly across every run at up to 32 concurrent workers.</li>
+    </ul>
+
+    <h4 class="cvstyle-subhead">Measured performance</h4>
+    <p>Processing 1,300 orders across a 999-product, 11-category catalogue scaled from ~20,000&nbsp;ms on a single thread down to ~650&nbsp;ms at 32 threads (a ~30&times; speedup) before plateauing as inventory-mutex contention became the bottleneck.</p>
+
+- slug: starlight-carnival
+  title: Starlight Carnival
+  subtitle: Amusement Park Management System
+  meta: COMP306 Group Project &middot; Group G &middot; Team of 5
+  accent: "#920394"
+  links:
+    - href: "https://github.com/PilotDevNull/Starlight-Carnival-Database-Managment-System---COMP306-Project"
+      icon: fab fa-github
+      title: View on GitHub
+  technologies:
+    - "Java &amp; Swing"
+    - "Custom Graphics2D Animation"
+    - "MySQL 8"
+    - "JDBC"
+    - "Views, Triggers &amp; Stored Procedures"
+    - "Role-Based Access Control"
+  body: |
+    <p>A full-stack database application modelling the day-to-day operations of a travelling amusement park (customer admissions and loyalty cards, employee rostering, ride/show/stall management, maintenance logging and financial transactions), all served through a role-based Java Swing front end over MySQL.</p>
+
+    <h4 class="cvstyle-subhead">My contribution</h4>
+    <p>I planned the business scenario that the whole database was modelled from: working out how a travelling carnival's customer admissions, loyalty smart cards, employee roles, attractions and financial transactions actually relate to one another, before any table existed. That scenario became the spec the EERD and schema were built against.</p>
+    <p>I then built the entire Java Swing front end and its visual design. Login is a custom-painted screen I wrote directly on <code>Graphics2D</code>: a drifting starfield of 180 twinkling stars, 18 looping carnival &ldquo;sparks&rdquo;, and a slowly shifting dual-tone gradient behind a rounded glass card, all hand-animated on a Swing <code>Timer</code>, no game engine or extra library involved. On top of that I built the generic <code>EntityConfig</code>-driven CRUD engine that every other screen is built from, the role-based routing between the four account types, the four-step Sales pipeline, and the Reports screen.</p>
+
+    <h4 class="cvstyle-subhead">System highlights</h4>
+    <ul>
+      <li>22 tables, 3 views, 2 stored procedures and a full set of triggers, seeded with sample data and four dedicated MySQL accounts (admin, sales, maintenance, guest) that each open a different role-specific screen.</li>
+      <li>A generic CRUD engine: every entity is declared once as metadata (table, fields, dropdowns, foreign-key bindings, subtype rules) and a single <code>EntityCrudPanel</code> builds the form, grid and SQL for all 21 entities: adding a new entity is a metadata entry, not a new screen.</li>
+      <li>A four-step Sales pipeline (identify customer &rarr; log admission &rarr; issue an access pass &rarr; summary) where the admission and pass insert as one atomic transaction, so a half-completed sale is never left behind.</li>
+      <li>Five concurrent SwingWorker-backed reports joining three or more tables each (revenue by location, ride maintenance cost, stall stock, staff distribution and top customer spend), so the UI never blocks while they run.</li>
+    </ul>
+
+    <p>All queries are parameterised throughout, and MySQL's own per-role privileges provide a second line of defence: even a bug in the Swing client can't issue a statement the account isn't allowed to run.</p>
+
+- slug: nlp-sentiment
+  title: NLP Sentiment Classification
+  subtitle: Naive Bayes vs BiLSTM vs BERT
+  meta: COMP316 Group Project &middot; The Steam Curators &middot; Team of 3 &middot; Project Lead
+  accent: "#345B89"
+  links:
+    - href: "https://github.com/PilotDevNull/Performance-Analysis-of-Generational-NLP-Based-Text-Classification-Algorithms---COMP316-Project"
+      icon: fab fa-github
+      title: View on GitHub
+  technologies:
+    - "Python"
+    - "PyTorch"
+    - "HuggingFace Transformers"
+    - "scikit-learn"
+    - "Steam Web API"
+    - "pandas"
+    - "NLTK / langdetect"
+  body: |
+    <p>A head-to-head comparison of three generations of NLP text classifiers (a traditional statistical model, a recurrent deep-learning model, and a pre-trained transformer) on the same binary sentiment task: predicting whether a Steam game review is Recommended or Not Recommended.</p>
+
+    <h4 class="cvstyle-subhead">My contribution</h4>
+    <p>I led the project and, in addition to training our BERT model, built the entire data pipeline that fed all three models (extraction, cleaning, balancing and splitting) as a standalone notebook the rest of the team's model notebooks all pointed at, so every model trained and tested on identical data.</p>
+    <p><strong>Extraction:</strong> Steam's API caps each request at 100 reviews and paginates with a cursor rather than an offset, so I wrote a loop that walks that cursor per game across 100 selected App&nbsp;IDs, targeting 500 positive and 500 negative reviews each. I collected by class as I went, not after the fact, because some games skew heavily positive and pulling reviews blind would have starved the negative class. Requests are rate-limited with <code>time.sleep()</code> to avoid throttling, and every write checks Steam's own review ID before saving, so re-running the script after a timeout or crash never reintroduces a duplicate.</p>
+    <p><strong>Cleaning:</strong> the raw pull (~94,900 reviews) needed several passes before it was trustworthy training data: stripping reviews mangled by Steam's profanity filter (which replaces swearing with a symbol that corrupts the surrounding text on read), removing links and spam patterns that carry no sentiment signal, running <code>langdetect</code> per review because Steam's own language tag reflects the client's UI language rather than the review text (this alone cut 21,950 reviews), stripping emojis the tokenisers can't meaningfully use, and de-duplicating by exact text (~18,000 reviews) so the same review couldn't land in both the train and test split and inflate accuracy.</p>
+    <p><strong>Balancing &amp; splitting:</strong> the cleaned data was balanced to an even 60,000 reviews (30k positive / 30k negative) and split 70:30 with stratification, so class balance held in both the training and test sets.</p>
+    <p>For my own model, I fine-tuned BERT (bert-base-uncased) with AdamW, a linear warmup schedule and gradient clipping on a 6GB GTX&nbsp;1060, and restored the best-validation-loss checkpoint to counter overfitting after epoch&nbsp;1.</p>
+
+    <h4 class="cvstyle-subhead">Results</h4>
+    <ul>
+      <li>BERT: <strong>88.73%</strong> accuracy, <strong>89.22%</strong> F1, the best of the three, at the cost of ~80 minutes' training time versus 35 seconds for the LSTM and 0.03 seconds for Naive Bayes.</li>
+      <li>Naive Bayes (84.11% accuracy) and BiLSTM (84.05%) landed almost identically despite very different architectures: Steam reviews are short (median 10 tokens) and lexically driven, which limits how much sequential context modelling actually helps.</li>
+      <li>BERT's ~4.6-point F1 lead over both baselines came from its pre-trained contextual representations, which handle negation and phrasing-driven sentiment that a bag-of-words or from-scratch embedding can't.</li>
+    </ul>
+
+- slug: music-square
+  title: Music Square
+  subtitle: A Mood-Square Player That Actually Listens
+  meta: Personal Project &middot; Solo
+  accent: "#CB727D"
+  links:
+    - href: "https://github.com/PilotDevNull/Music-Square-Mood-based-Music-Player"
+      icon: fab fa-github
+      title: View on GitHub
+  technologies:
+    - "Python"
+    - "librosa"
+    - "Flask"
+    - "mutagen / soundfile"
+    - "JavaScript &amp; Canvas"
+    - "Cache Storage API"
+  body: |
+    <p>A local player for FLAC libraries, inspired by the old Samsung TouchWiz Music Square, except instead of relying on genre tags or an online lookup, it plots every track by actually analysing the audio itself. Everything runs locally: no files, tags or audio ever leave the machine.</p>
+
+    <h4 class="cvstyle-subhead">How the mood coordinates work</h4>
+    <p>For each track, <code>librosa</code> extracts tempo, loudness (RMS), onset rate, spectral centroid, and a tonality &ldquo;mode score&rdquo; from a chroma vector compared against major/minor key profiles. These five raw features are then z-scored across the <em>whole library</em> (so &ldquo;loud&rdquo; or &ldquo;bright&rdquo; is always relative to your own collection) and combined into two weighted axes: arousal (tempo-led) for the x-position and valence (tonality-led) for the y-position, each compressed to -1..+1 with a tanh squash.</p>
+
+    <h4 class="cvstyle-subhead">Interface</h4>
+    <ul>
+      <li>Click anywhere on the square to drop a probe and build a mix from the nearest-sounding tracks, or drag to sweep a path through a sequence of moods.</li>
+      <li>Tracks render as their own album art clipped to a circle; the whole UI takes its colour from whatever's playing, sampling the art down to a tiny canvas and deriving a background wash and accent palette from it, Material-You style.</li>
+      <li>A Flask server streams the audio and serves the analysis; the frontend is vanilla JS and Canvas, with art double-cached (server-side and via the browser's Cache Storage API) so reloads are instant.</li>
+    </ul>
+
+    <p>The analyzer is resumable and parallelised: it samples ~60 seconds per track from ~30% in, skips already-scored files on re-runs, and falls back to a slower crash-isolated mode if a corrupt file would otherwise take down the whole batch.</p>
+
+- slug: portfolio-website
+  title: Portfolio Website
+  subtitle: This Site
+  meta: Personal Project &middot; Solo
+  accent: "#0b5294"
+  links:
+    - href: "https://jawadkachbal.com"
+      icon: fas fa-arrow-up-right-from-square
+      title: Visit the live site
+    - href: "https://github.com/PilotDevNull/Portfolio-Website"
+      icon: fab fa-github
+      title: View on GitHub
+  technologies:
+    - "Jekyll"
+    - "SCSS / Sass"
+    - "Vanilla JavaScript"
+    - "Font Awesome"
+    - "GitHub Pages"
+  body: |
+    <p>The site you're looking at right now. A single-page Jekyll portfolio with sliding panels for About Me, Projects and a full Detailed CV, all themed and colour-matched to my actual CV rather than a generic template look.</p>
+
+    <h4 class="cvstyle-subhead">What it's built on</h4>
+    <p>Rather than starting from a blank page, I built this on top of two open-source Jekyll templates and reworked both substantially:</p>
+    <ul>
+      <li>The overall one-page shell (the sliding panel system, video background and layout grid) started from <strong>jekyll-uno</strong> by Josh Gerdes, as extended into <strong>jekyll-uno-timeline</strong> by Thomas Z&uuml;hlke, both MIT-licensed. Almost none of the original styling remains; the panel system, project carousel, colour theming and CV integration are my own additions on top of that base.</li>
+      <li>The Detailed CV page is built on the <strong>Orbit</strong> resume/CV template by Xiaoying Riley (<a href="http://themes.3rdwavemedia.com" target="_blank" rel="nofollow">themes.3rdwavemedia.com</a>, Creative&nbsp;Commons&nbsp;Attribution&nbsp;3.0), restructured into the sidebar-plus-main layout you see and recoloured to match my actual paper CV, then embedded into the main site as its own popup panel.</li>
+      <li>Icons throughout are <strong>Font&nbsp;Awesome&nbsp;Free</strong>. The site is built with Jekyll and hosted on GitHub&nbsp;Pages.</li>
+    </ul>
+
+    <h4 class="cvstyle-subhead">What I actually built</h4>
+    <ul>
+      <li>A shared sliding-panel system (About&nbsp;Me, Projects grid, and every individual project) with consistent open/close animation, keyboard (Escape) handling, and swipe support on mobile.</li>
+      <li>The CV page: a from-scratch sidebar-plus-main layout matched to my real CV's colours, with per-project accent colours picked directly from each project's artwork rather than a fixed palette.</li>
+      <li>The Detailed CV popup embeds the standalone CV page in an iframe so it stays a real, linkable page on its own while still opening in-place like every other panel.</li>
+      <li>All the copy, project write-ups and colour decisions on the site are mine, iterated over several rounds to fix layout bugs, improve contrast, and keep the design consistent as content was added.</li>
+    </ul>

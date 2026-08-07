@@ -2,11 +2,7 @@
     {% include detailed-cv-panel.html %}
     {% include cover-letter.html %}
     {% include portfolio-index.html %}
-    {% include portfolio-nexus-logistics.html %}
-    {% include portfolio-starlight-carnival.html %}
-    {% include portfolio-nlp-sentiment.html %}
-    {% include portfolio-music-square.html %}
-    {% include portfolio-website-project.html %}
+    {% include portfolio-projects.html %}
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -23,11 +19,9 @@
             const closePortfolioIndexBtn = document.getElementById('close-portfolio-index');
             const closePortfolioBtn = document.querySelectorAll('.close-portfolio:not(#close-portfolio-index)');
             const portfolioSections = {
-                'nexus-logistics-section': document.getElementById('nexus-logistics-section'),
-                'starlight-carnival-section': document.getElementById('starlight-carnival-section'),
-                'nlp-sentiment-section': document.getElementById('nlp-sentiment-section'),
-                'music-square-section': document.getElementById('music-square-section'),
-                'portfolio-website-section': document.getElementById('portfolio-website-section')
+                {% for project in site.data.portfolio %}
+                '{{ project.slug }}-section': document.getElementById('{{ project.slug }}-section'){% unless forloop.last %},{% endunless %}
+                {% endfor %}
             };
             const portfolioHomeBtns = document.querySelectorAll('.portfolio-home-btn');
             const body = document.body;

@@ -9,55 +9,17 @@
 
             <div class="portfolio-index-content">
                 <div class="category-grid">
-                    <article class="category-tile" data-target="nexus-logistics-section">
+                    {% for project in site.data.portfolio %}
+                    <article class="category-tile" data-target="{{ project.slug }}-section">
                         <div class="tile-image">
-                            <img src="{{ site.baseurl }}/images/projects/nexus-logistics.jpg" alt="Nexus Logistics">
+                            <img src="{{ site.baseurl }}/images/projects/{{ project.slug }}.jpg" alt="{{ project.title }}">
                         </div>
-                        <a href="#" class="tile-title-link" data-target="nexus-logistics-section" aria-label="Open Nexus Logistics project">
-                            <span class="tile-title">Nexus Logistics</span>
+                        <a href="#" class="tile-title-link" data-target="{{ project.slug }}-section" aria-label="Open {{ project.title }} project">
+                            <span class="tile-title">{{ project.title }}</span>
                             <i class="fas fa-arrow-up-right-from-square"></i>
                         </a>
                     </article>
-
-                    <article class="category-tile" data-target="starlight-carnival-section">
-                        <div class="tile-image">
-                            <img src="{{ site.baseurl }}/images/projects/starlight-carnival.jpg" alt="Starlight Carnival">
-                        </div>
-                        <a href="#" class="tile-title-link" data-target="starlight-carnival-section" aria-label="Open Starlight Carnival project">
-                            <span class="tile-title">Starlight Carnival</span>
-                            <i class="fas fa-arrow-up-right-from-square"></i>
-                        </a>
-                    </article>
-
-                    <article class="category-tile" data-target="nlp-sentiment-section">
-                        <div class="tile-image">
-                            <img src="{{ site.baseurl }}/images/projects/nlp-sentiment.jpg" alt="NLP Sentiment Classification">
-                        </div>
-                        <a href="#" class="tile-title-link" data-target="nlp-sentiment-section" aria-label="Open NLP Sentiment Classification project">
-                            <span class="tile-title">NLP Sentiment Classification</span>
-                            <i class="fas fa-arrow-up-right-from-square"></i>
-                        </a>
-                    </article>
-
-                    <article class="category-tile" data-target="music-square-section">
-                        <div class="tile-image">
-                            <img src="{{ site.baseurl }}/images/projects/music-square.jpg" alt="Music Square">
-                        </div>
-                        <a href="#" class="tile-title-link" data-target="music-square-section" aria-label="Open Music Square project">
-                            <span class="tile-title">Music Square</span>
-                            <i class="fas fa-arrow-up-right-from-square"></i>
-                        </a>
-                    </article>
-
-                    <article class="category-tile" data-target="portfolio-website-section">
-                        <div class="tile-image">
-                            <img src="{{ site.baseurl }}/images/projects/portfolio-website.jpg" alt="Portfolio Website">
-                        </div>
-                        <a href="#" class="tile-title-link" data-target="portfolio-website-section" aria-label="Open Portfolio Website project">
-                            <span class="tile-title">Portfolio Website</span>
-                            <i class="fas fa-arrow-up-right-from-square"></i>
-                        </a>
-                    </article>
+                    {% endfor %}
                 </div>
             </div>
         </div>

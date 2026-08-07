@@ -1,0 +1,44 @@
+{% for project in site.data.portfolio %}
+    <section class="portfolio-section cvstyle-section" id="{{ project.slug }}-section">
+        <div class="cvstyle-actions-float">
+            {% for link in project.links %}
+            <a href="{{ link.href }}" target="_blank" class="overlay-header__btn" title="{{ link.title }}">
+                <i class="{{ link.icon }}"></i>
+            </a>
+            {% endfor %}
+            <button class="overlay-header__btn close-portfolio" id="close-{{ project.slug }}" aria-label="Back to projects">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="cvstyle-outer">
+            <div class="cvstyle-container" style="--accent:{{ project.accent }};">
+                <div class="cvstyle-sidebar">
+                    <picture>
+                        <source media="(max-width: 700px)" srcset="{{ site.baseurl }}/images/projects/{{ project.slug }}.jpg">
+                        <img class="cvstyle-artwork" src="{{ site.baseurl }}/images/projects/{{ project.slug }}-inside.jpg" alt="{{ project.title }} artwork">
+                    </picture>
+
+                    <div class="cvstyle-sidebar-divider"></div>
+
+                    <h3 class="cvstyle-sidebar-heading">Technologies</h3>
+                    <ul class="cvstyle-sidebar-list">
+                        {% for tech in project.technologies %}
+                        <li>{{ tech }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="cvstyle-main">
+                    <h1 class="cvstyle-title">{{ project.title }}</h1>
+                    <h2 class="cvstyle-subtitle">{{ project.subtitle }}</h2>
+                    <div class="cvstyle-meta">{{ project.meta }}</div>
+
+                    <div class="cvstyle-body">
+                        {{ project.body }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endfor %}
