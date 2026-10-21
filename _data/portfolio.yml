@@ -190,7 +190,7 @@
       <li>The Detailed CV popup embeds the standalone CV page in an iframe so it stays a real, linkable page on its own while still opening in-place like every other panel.</li>
       <li>All the copy, project write-ups and colour decisions on the site are mine, iterated over several rounds to fix layout bugs, improve contrast, and keep the design consistent as content was added.</li>
     </ul>
-    - slug: confident-agent
+- slug: confident-agent
 
   title: Confident Agent
 
