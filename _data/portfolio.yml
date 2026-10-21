@@ -190,3 +190,91 @@
       <li>The Detailed CV popup embeds the standalone CV page in an iframe so it stays a real, linkable page on its own while still opening in-place like every other panel.</li>
       <li>All the copy, project write-ups and colour decisions on the site are mine, iterated over several rounds to fix layout bugs, improve contrast, and keep the design consistent as content was added.</li>
     </ul>
+    - slug: confident-agent
+
+  title: Confident Agent
+
+  subtitle: Static Verification of REST API Hallucinations in LLM-Generated Code
+
+  meta: COMP301 Group Project &middot; The Skeptics &middot; Team of 5 &middot; Group Leader
+
+  accent: "#3D95E8"
+
+  links:
+
+    - href: "https://github.com/PilotDevNull/Confident-Agent-COMP301-Project"
+
+      icon: fab fa-github
+
+      title: View on GitHub
+
+    - href: "https://github.com/PilotDevNull/Confident-Agent-COMP301-Project/blob/main/COMP301%20Project%20Final%20Submission/Final%20Report%20and%20Documentation/Final%20Report/COMP301%20The%20Skeptics%20Final%20Report.pdf"
+
+      icon: fas fa-file-pdf
+
+      title: Read the final report
+
+  technologies:
+
+    - "Python"
+
+    - "TypeScript &amp; Node.js"
+
+    - "LM Studio Plugin (Qwen3.5-9B)"
+
+    - "OpenAPI Specifications"
+
+    - "Pyright"
+
+    - "pandas / SciPy / Matplotlib"
+
+  body: |
+
+    <p>My biggest project to date. Language models write plausible code that calls web APIs which do not exist, at versions that have been retired, with parameters the provider never documented. I led a team of five to test whether an agent can stop those REST API hallucinations from <em>reaching the user</em>, guided by one idea: a Confident Agent is not one that is always correct, but one that knows when it should not be trusted.</p>
+
+    <h4 class="cvstyle-subhead">My contribution</h4>
+
+    <p>I led the group and shaped the project end to end:</p>
+
+    <ul>
+
+      <li><strong>Overall architecture and design:</strong> the shape of the whole system, from how the model, the verification tool and the release decision fit together to how the experiment is structured around them.</li>
+
+      <li><strong>Attachment point:</strong> I chose where the verifier plugs in. It runs as an in-loop tool the model calls through function calling, so the thing we measured is the package a developer would actually run, rather than a post-hoc script or a pipeline of more models that could hallucinate themselves.</li>
+
+      <li><strong>Benchmark and evaluator design:</strong> the 1,000-task benchmark with its executable answer key, and an independent sandboxed evaluator that shares no code with the agent, so the agent's blind spots could not become the experiment's.</li>
+
+      <li><strong>Running the tests and benchmark runs:</strong> the verifier and benchmark checks, plus the paired runs of the baseline and the agent.</li>
+
+      <li><strong>Art style:</strong> the visual identity of the project, from the navy, yellow and blue palette to the banners, slides and README.</li>
+
+    </ul>
+
+    <h4 class="cvstyle-subhead">How it works</h4>
+
+    <p>A local model (Qwen3.5-9B) is paired with a deterministic validation tool that parses the generated Python without running it and checks every API claim across six layers (imports, identifiers, access point, input contract, output contract and security context) against frozen, hashed OpenAPI specifications. The evidence is summarised in an Evidence-Weighted Confidence Score, and a decision policy then delivers, flags, corrects once, or withholds the code. Hard verification constraints, not the score, decide whether anything is released.</p>
+
+    <h4 class="cvstyle-subhead">The experiment</h4>
+
+    <ul>
+
+      <li>A benchmark of 1,000 Python tasks over six public REST APIs, generated from pinned specifications. Of these, 990 were scored.</li>
+
+      <li>A paired comparison of the unmodified model against the agent at three quantizations (2,970 task pairs).</li>
+
+      <li>A pre-registered analysis plan, exact McNemar tests, cluster-bootstrap intervals, manual audits of the answer key and evaluator, and a cost analysis in time, tokens, energy and Rand.</li>
+
+    </ul>
+
+    <h4 class="cvstyle-subhead">Results</h4>
+
+    <ul>
+
+      <li>Hallucinated code reaching the user fell from <strong>50.8&ndash;55.2%</strong> to <strong>1.6&ndash;2.3%</strong>, while correct code rose from 24.9&ndash;36.9% to 50.4&ndash;51.5%.</li>
+
+      <li>83% of baseline hallucinations (1,303 of 1,562) were stale or extrapolated API versions: the model reproduces the versions that dominate its training data and invents version numbers it has never seen. Nothing in its weights records that an API has moved, so the fix has to be external evidence.</li>
+
+      <li>The protection has costs: the agent abstains on 38&ndash;40% of tasks and takes about six times the time and energy of the baseline. Verification establishes conformance to the API contract, not that the code does what the user asked.</li>
+
+    </ul>
+
