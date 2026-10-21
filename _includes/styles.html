@@ -1992,6 +1992,230 @@
             }
         }
     
+        /* ================================================================
+           PROJECT ARTWORK THEMES (per-project, no Liquid/YAML changes)
+           Each section ID is generated from the project slug in portfolio.yml.
+           These declarations only style the matching project detail panel.
+           ================================================================ */
+
+        /* Nexus Logistics: cargo-ship blue, container orange, cream panels */
+        #nexus-logistics-section {
+            --project-side-start: #153C57;
+            --project-side-mid: #194E69;
+            --project-side-end: #0A2339;
+            --project-text: #F5FAFC;
+            --project-mark: #FFAD45;
+            --project-heading: #A93D19;
+            --project-highlight: #D75121;
+            --project-main-bg: #FFFCF7;
+            --project-ink: #263846;
+            --project-muted: #697887;
+            --project-outline: rgba(227,91,45,.35);
+            --project-display: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        /* Starlight Carnival: violet night, magenta and marquee gold */
+        #starlight-carnival-section {
+            --project-side-start: #2B124C;
+            --project-side-mid: #671D74;
+            --project-side-end: #330D56;
+            --project-text: #FFF0FC;
+            --project-mark: #FFD16B;
+            --project-heading: #681870;
+            --project-highlight: #9F278B;
+            --project-main-bg: #FFFAFE;
+            --project-ink: #392D4A;
+            --project-muted: #776C85;
+            --project-outline: rgba(188,61,163,.35);
+            --project-display: Georgia, 'Times New Roman', serif;
+        }
+
+        /* NLP Sentiment: dark neural-network blues with warm signal nodes */
+        #nlp-sentiment-section {
+            --project-side-start: #0A203D;
+            --project-side-mid: #173D6B;
+            --project-side-end: #08182E;
+            --project-text: #E8F3FF;
+            --project-mark: #FFBE59;
+            --project-heading: #163B69;
+            --project-highlight: #2866A4;
+            --project-main-bg: #F8FBFF;
+            --project-ink: #24384E;
+            --project-muted: #6C7E91;
+            --project-outline: rgba(55,123,196,.35);
+            --project-display: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        /* Music Square: album-art pinks, warm mauve and soft blush */
+        #music-square-section {
+            --project-side-start: #40253E;
+            --project-side-mid: #8B465E;
+            --project-side-end: #2B223C;
+            --project-text: #FFF1F2;
+            --project-mark: #FFC4A8;
+            --project-heading: #893A58;
+            --project-highlight: #A84968;
+            --project-main-bg: #FFFAFB;
+            --project-ink: #3A303E;
+            --project-muted: #7E7280;
+            --project-outline: rgba(203,114,125,.38);
+            --project-display: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        /* Portfolio Website: CV-inspired royal blue and light blue */
+        #portfolio-website-section {
+            --project-side-start: #073666;
+            --project-side-mid: #0B5294;
+            --project-side-end: #062644;
+            --project-text: #F0F7FF;
+            --project-mark: #A8D6FF;
+            --project-heading: #0B5294;
+            --project-highlight: #1469AE;
+            --project-main-bg: #FFFFFF;
+            --project-ink: #2A3542;
+            --project-muted: #6B7C8C;
+            --project-outline: rgba(11,82,148,.32);
+            --project-display: 'Roboto Slab', Georgia, serif;
+        }
+
+        /* Shared details for the five additional artwork themes only. */
+        :is(#nexus-logistics-section, #starlight-carnival-section,
+            #nlp-sentiment-section, #music-square-section,
+            #portfolio-website-section) .cvstyle-container {
+            border: 1px solid var(--project-outline);
+        }
+
+        :is(#nexus-logistics-section, #starlight-carnival-section,
+            #nlp-sentiment-section, #music-square-section,
+            #portfolio-website-section) .cvstyle-sidebar {
+            background: linear-gradient(155deg,
+                var(--project-side-start), var(--project-side-mid) 48%,
+                var(--project-side-end));
+            color: var(--project-text);
+        }
+
+        :is(#nexus-logistics-section, #starlight-carnival-section,
+            #nlp-sentiment-section, #music-square-section,
+            #portfolio-website-section) .cvstyle-artwork {
+            border: 1px solid var(--project-outline);
+            background: rgba(0,0,0,.15);
+            box-shadow: 0 12px 28px rgba(0,0,0,.28);
+        }
+
+        :is(#nexus-logistics-section, #starlight-carnival-section,
+            #nlp-sentiment-section, #music-square-section,
+            #portfolio-website-section) .cvstyle-sidebar-divider {
+            background: linear-gradient(90deg, transparent,
+                var(--project-mark), transparent);
+            opacity: .9;
+        }
+
+        :is(#nexus-logistics-section, #starlight-carnival-section,
+            #nlp-sentiment-section, #music-square-section,
+            #portfolio-website-section) .cvstyle-sidebar-heading {
+            color: var(--project-mark);
+            font-weight: 800;
+            letter-spacing: 1.7px;
+        }
+
+        :is(#nexus-logistics-section, #starlight-carnival-section,
+            #nlp-sentiment-section, #music-square-section,
+            #portfolio-website-section) .cvstyle-sidebar-list li {
+            color: var(--project-text);
+        }
+
+        :is(#nexus-logistics-section, #starlight-carnival-section,
+            #nlp-sentiment-section, #music-square-section,
+            #portfolio-website-section) .cvstyle-sidebar-list li::before {
+            color: var(--project-mark);
+        }
+
+        :is(#nexus-logistics-section, #starlight-carnival-section,
+            #nlp-sentiment-section, #music-square-section,
+            #portfolio-website-section) .cvstyle-main {
+            background: var(--project-main-bg);
+            color: var(--project-ink);
+        }
+
+        :is(#nexus-logistics-section, #starlight-carnival-section,
+            #nlp-sentiment-section, #music-square-section,
+            #portfolio-website-section) .cvstyle-title {
+            font-family: var(--project-display);
+            font-style: normal;
+            font-weight: 800;
+            color: var(--project-heading);
+            letter-spacing: -.35px;
+        }
+
+        :is(#nexus-logistics-section, #starlight-carnival-section,
+            #nlp-sentiment-section, #music-square-section,
+            #portfolio-website-section) .cvstyle-subtitle {
+            color: var(--project-highlight);
+            font-weight: 700;
+        }
+
+        :is(#nexus-logistics-section, #starlight-carnival-section,
+            #nlp-sentiment-section, #music-square-section,
+            #portfolio-website-section) .cvstyle-meta {
+            color: var(--project-muted);
+        }
+
+        :is(#nexus-logistics-section, #starlight-carnival-section,
+            #nlp-sentiment-section, #music-square-section,
+            #portfolio-website-section) .cvstyle-body {
+            color: var(--project-ink);
+        }
+
+        :is(#nexus-logistics-section, #starlight-carnival-section,
+            #nlp-sentiment-section, #music-square-section,
+            #portfolio-website-section) .cvstyle-body strong {
+            color: var(--project-heading);
+        }
+
+        :is(#nexus-logistics-section, #starlight-carnival-section,
+            #nlp-sentiment-section, #music-square-section,
+            #portfolio-website-section) .cvstyle-subhead {
+            color: var(--project-heading);
+            font-weight: 800;
+            letter-spacing: 1px;
+            border-left: 3px solid var(--project-mark);
+            padding-left: 10px;
+        }
+
+        :is(#nexus-logistics-section, #starlight-carnival-section,
+            #nlp-sentiment-section, #music-square-section,
+            #portfolio-website-section) .cvstyle-body a {
+            color: var(--project-highlight);
+            text-decoration-color: var(--project-outline);
+        }
+
+        :is(#nexus-logistics-section, #starlight-carnival-section,
+            #nlp-sentiment-section, #music-square-section,
+            #portfolio-website-section) .cvstyle-body a:hover {
+            color: var(--project-heading);
+        }
+
+        /* Small artwork-specific flourishes; no change to content or layout. */
+        #nexus-logistics-section .cvstyle-subhead {
+            border-left-width: 4px;
+        }
+        #starlight-carnival-section .cvstyle-title {
+            font-weight: 700;
+        }
+        #nlp-sentiment-section .cvstyle-sidebar {
+            background-image: radial-gradient(circle at 85% 18%,
+                rgba(79,161,235,.22), transparent 35%),
+                linear-gradient(155deg, #0A203D, #173D6B 48%, #08182E);
+        }
+        #music-square-section .cvstyle-sidebar {
+            background-image: radial-gradient(circle at 20% 16%,
+                rgba(255,196,168,.16), transparent 37%),
+                linear-gradient(155deg, #40253E, #8B465E 48%, #2B223C);
+        }
+        #portfolio-website-section .cvstyle-title {
+            letter-spacing: -.5px;
+        }
+
         /* ======= Confident Agent / The Skeptics: project-only theme ======= */
         /* Scoped to the existing project section generated from its YAML slug. */
         #confident-agent-section .cvstyle-container {
