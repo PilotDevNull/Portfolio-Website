@@ -93,7 +93,7 @@
   title: NLP Sentiment Classification
   subtitle: Naive Bayes vs BiLSTM vs BERT
   meta: COMP316 Group Project &middot; The Steam Curators &middot; Team of 3 &middot; Project Lead
-  accent: "#345B89"
+  accent: "#1FAE74"
   links:
     - href: "https://github.com/PilotDevNull/Performance-Analysis-of-Generational-NLP-Based-Text-Classification-Algorithms---COMP316-Project"
       icon: fab fa-github
@@ -277,4 +277,78 @@
       <li>The protection has costs: the agent abstains on 38&ndash;40% of tasks and takes about six times the time and energy of the baseline. Verification establishes conformance to the API contract, not that the code does what the user asked.</li>
 
     </ul>
+  
+- slug: corebuster
+  title: CoreBuster
+  subtitle: Break the Armour. Take the Core. Choose the Ship's Fate.
+  meta: COMP307 Group Project &middot; Cosmic Studios &middot; Team of 5
+  accent: "#D49A54"
+
+  links:
+    - href: "https://github.com/PilotDevNull/COMP307-COREBUSTER-FINAL-SUBMISSION"
+      icon: fab fa-github
+      title: View on GitHub
+    - href: "https://github.com/PilotDevNull/COMP307-COREBUSTER-FINAL-SUBMISSION#about-this-game"
+      icon: fas fa-gamepad
+      title: Explore the game
+
+  technologies:
+    - "Unity 6 / URP"
+    - "C#"
+    - "ShaderLab / HLSL"
+    - "Procedural Mesh Generation"
+    - "NavMesh &amp; Enemy AI"
+    - "Python / Pillow"
+    - "Custom Rendering &amp; Ray-Traced AO"
+
+  body: |
+    <p><strong>Break the armour. Take the core. Choose the ship's fate.</strong> CoreBuster is a science-fiction first-person shooter developed in Unity 6 for COMP307 Computer Graphics. The player awakens aboard a malfunctioning spaceship overrun by hostile robots, fights through interconnected industrial chambers, and ultimately decides between escaping the ship or confronting its unstable reactor core.</p>
+
+    <h4 class="cvstyle-subhead">The signature mechanic: Core Bust</h4>
+
+    <p>At the centre of the combat system is <strong>Core Bust</strong>, a first-person execution mechanic. Armoured enemies contain unstable energy cores. Once their armour has been destroyed, the player can approach and execute them, physically extracting the exposed core through a synchronised animation. A successful execution restores health, but leaves behind a toxic gas cloud that creates a new environmental hazard.</p>
+
+    <p>The mechanic is implemented through coordinated gameplay state machines involving <code>ArmouredEnemy</code>, <code>CoreExecutionTarget</code>, <code>CoreExecutioner</code> and <code>UnstableCore</code>. Armour destruction extracts geometry from the animated mesh and converts it into physical debris rather than simply hiding the armour.</p>
+
+    <h4 class="cvstyle-subhead">Weapons and combat</h4>
+
+    <ul>
+      <li><strong>The Blaster:</strong> the player's primary firearm, used for conventional combat and breaking enemy armour.</li>
+      <li><strong>The Disassembler:</strong> charged through successful executions, this sidearm electrocutes and temporarily immobilises enemies while exposing their cores for further executions.</li>
+      <li><strong>XR-7 Armour Buster:</strong> an unlockable rocket launcher whose explosions strip armour from nearby enemies, preserving the game's execution-focused combat system.</li>
+      <li><strong>Movement:</strong> sprinting, crouching, sliding, jumping, wall-running and dodging provide mobility during combat encounters.</li>
+    </ul>
+
+    <h4 class="cvstyle-subhead">Enemy AI</h4>
+
+    <p>The game features <strong>four main enemy classes across nine variants</strong>, including armoured Cyber Soldiers and Elites, standard ground robots, and airborne HoverBots. Enemies use NavMesh navigation, room-aware pathfinding, line-of-sight detection, telegraphed attacks and procedural attack animation.</p>
+
+    <p>Enemy behaviour reacts to armour damage, electrical status effects, the player's position and the ship's security doors. Reinforcements arrive through warp-in effects during lockdown encounters.</p>
+
+    <h4 class="cvstyle-subhead">World and progression</h4>
+
+    <p>The spaceship is designed as a continuous level with five connected zones, including a tutorial wing, workshop, reactor chamber, turbine hall and final Boss Hall. Security doors and keycards govern progression between areas, while terminals initiate lockdowns and waves of enemies.</p>
+
+    <p>The game offers <strong>two endings</strong>. The player can survive a timed escape sequence or enter the final chamber and dismantle the giant reactor core through a multi-stage encounter involving three consoles and destructible armour layers.</p>
+
+    <h4 class="cvstyle-subhead">Computer graphics engineering</h4>
+
+    <ul>
+      <li><strong>18 custom shaders:</strong> hand-written ShaderLab/HLSL implementations for energy fields, procedural armour damage, toxic gas, electrical effects, reactor beams and animated materials.</li>
+      <li><strong>Procedural space environment:</strong> a GPU-generated nebula skybox featuring a black hole, gravitational lensing and an animated accretion disk.</li>
+      <li><strong>First-principles asset generation:</strong> industrial machinery, tanks, reactors, turbines, pipes, weapons, environmental signage, textures and audio generated using Unity editor tools and Python scripts.</li>
+      <li><strong>Ray-traced ambient occlusion:</strong> a custom rendering implementation with temporal accumulation and depth-aware filtering.</li>
+      <li><strong>Visual effects:</strong> animated energy fields, electrical arcs, armour cracks, volumetric-looking gas effects, reactor instability and procedural particles.</li>
+    </ul>
+
+    <h4 class="cvstyle-subhead">Architecture and optimisation</h4>
+
+    <p>Gameplay systems are organised into separate assemblies for shared infrastructure, gameplay, artificial intelligence, user interfaces and rendering.</p>
+
+    <p>A custom <code>ZoneStreamer</code> system reduces rendering overhead by suppressing renderers in rooms that are not currently visible, while preserving physics and AI simulation. The project also includes configurable graphics quality profiles and rendering optimisations for constrained hardware.</p>
+
+    <h4 class="cvstyle-subhead">Development context</h4>
+
+    <p>Developed by <strong>Cosmic Studios</strong> as a five-person COMP307 group project at the University of KwaZulu-Natal. CoreBuster combines real-time computer graphics, interactive gameplay, procedural content creation, game AI and software engineering in a single playable project.</p>
+
 
