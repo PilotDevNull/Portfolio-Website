@@ -54,7 +54,7 @@ sidebar:
 career-profile:
   title: Profile
   summary: |
-    Computer Science student and aspiring software engineer with hands-on project experience in C++, Java, and Python, complemented by years of professional IT support and client-facing experience.
+    Computer Science student and aspiring software engineer with hands-on project experience in C++, Java, Python, and C# (Unity), spanning systems programming, machine learning, agentic AI system architecture and design, LLM reliability research, and real-time computer graphics, complemented by years of professional IT support and client-facing experience.
 
 education:
   title: Education
@@ -98,6 +98,24 @@ projects:
   title: Projects
   intro: For more projects and details, visit my GitHub.
   assignments:
+  - title: "Confident Agent: Detecting REST API Hallucinations in LLM-Generated Code"
+    link: "https://github.com/PilotDevNull/Confident-Agent-COMP301-Project"
+    tech: "Python, TypeScript/Node.js, OpenAPI, Pyright &middot; COMP301 Group Project &middot; Team of 5 &middot; Group Leader"
+    details: |
+      Led a team of five to design, build and evaluate an agentic AI system that stops hallucinated REST API calls in LLM-generated Python from reaching the user, pairing a local model (Qwen3.5-9B) with an in-loop static verification tool that checks code against frozen OpenAPI specifications.
+        - Owned the overall system architecture: how the model, tool and release decision fit together, including the verifier's attachment point as a function-calling tool inside the agent loop (rather than a post-hoc script or a chain of further models that could hallucinate themselves)
+        - Designed the agent's control logic: a six-layer verification pipeline, an Evidence-Weighted Confidence Score, and a decision policy that delivers, flags, corrects once, or withholds code, with hard verification constraints overriding the score
+        - Designed a 1,000-task benchmark with an independent sandboxed evaluator that shares no code with the agent, and ran the paired baseline-vs-agent experiments across three model quantizations
+        - Cut hallucinated code reaching the user from 50.8-55.2% to 1.6-2.3% while raising correct code from 24.9-36.9% to 50.4-51.5%, with a pre-registered analysis plan, McNemar tests and a cost analysis
+
+  - title: "CoreBuster: Sci-Fi First-Person Shooter"
+    link: "https://github.com/PilotDevNull/COMP307-COREBUSTER-FINAL-SUBMISSION"
+    tech: "C#, Unity 6 (URP), ShaderLab/HLSL, Python &middot; COMP307 Group Project &middot; Cosmic Studios &middot; Team of 5"
+    details: |
+      Computer graphics project: a first-person shooter built around "Core Bust", an execution mechanic in which enemy armour is converted into physical debris and unstable cores are extracted, across five connected ship zones with two endings.
+        - Wrote 18 custom ShaderLab/HLSL shaders, a GPU-generated nebula skybox with a black hole and gravitational lensing, and a custom ray-traced ambient occlusion pass with temporal accumulation
+        - Built NavMesh-based enemy AI (four classes, nine variants) and a ZoneStreamer system that cuts rendering cost while preserving physics and AI simulation
+
   - title: "Nexus Logistics: Inventory Management System"
     link: "https://github.com/PilotDevNull"
     tech: "C++ &middot; CLI + Qt6 GUI (bonus) &middot; COMP315 Group Project &middot; Team of 7"
@@ -151,8 +169,17 @@ skills:
   - name: "C++ (OOP, multi-threading)"
   - name: "Java & Swing (JDBC)"
   - name: "Python (ML / NLP)"
+  - name: "C# & Unity 6 (Game Development)"
+  - name: "Computer Graphics (HLSL / ShaderLab, URP)"
+  - name: "Game AI (NavMesh Pathfinding)"
+  - name: "TypeScript & Node.js"
+  - name: "Agentic AI System Architecture & Design"
+  - name: "LLM Tool Use & Function Calling"
+  - name: "AI Evaluation & Benchmark Design"
+  - name: "LLM Evaluation & Static Analysis"
   - name: "SQL & Database Design"
   - name: "Qt6 GUI Development"
+  - name: "Web Development (Jekyll, SCSS, JavaScript)"
   - name: "Git & Version Control"
   - name: "IT Hardware & Troubleshooting"
   - name: "CRM & Account Management"
