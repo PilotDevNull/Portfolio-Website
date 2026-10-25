@@ -153,43 +153,78 @@
     </ul>
 
     <p>The analyzer is resumable and parallelised: it samples ~60 seconds per track from ~30% in, skips already-scored files on re-runs, and falls back to a slower crash-isolated mode if a corrupt file would otherwise take down the whole batch.</p>
+- slug: corebuster
+  title: CoreBuster
+  subtitle: Break the Armour. Take the Core. Choose the Ship's Fate.
+  meta: COMP307 Group Project &middot; Cosmic Studios &middot; Team of 5
+  accent: "#D49A54"
 
-- slug: portfolio-website
-  title: Portfolio Website
-  subtitle: This Site
-  meta: Personal Project &middot; Solo
-  accent: "#0b5294"
   links:
-    - href: "https://jawadkachbal.com"
-      icon: fas fa-arrow-up-right-from-square
-      title: Visit the live site
-    - href: "https://github.com/PilotDevNull/Portfolio-Website"
+    - href: "https://github.com/PilotDevNull/COMP307-COREBUSTER-FINAL-SUBMISSION"
       icon: fab fa-github
       title: View on GitHub
+    - href: "https://github.com/PilotDevNull/COMP307-COREBUSTER-FINAL-SUBMISSION#about-this-game"
+      icon: fas fa-gamepad
+      title: Explore the game
+
   technologies:
-    - "Jekyll"
-    - "SCSS / Sass"
-    - "Vanilla JavaScript"
-    - "Font Awesome"
-    - "GitHub Pages"
+    - "Unity 6 / URP"
+    - "C#"
+    - "ShaderLab / HLSL"
+    - "Procedural Mesh Generation"
+    - "NavMesh &amp; Enemy AI"
+    - "Python / Pillow"
+    - "Custom Rendering &amp; Ray-Traced AO"
+
   body: |
-    <p>The site you're looking at right now. A single-page Jekyll portfolio with sliding panels for About Me, Projects and a full Detailed CV, all themed and colour-matched to my actual CV rather than a generic template look.</p>
+    <p><strong>Break the armour. Take the core. Choose the ship's fate.</strong> CoreBuster is a science-fiction first-person shooter developed in Unity 6 for COMP307 Computer Graphics. The player awakens aboard a malfunctioning spaceship overrun by hostile robots, fights through interconnected industrial chambers, and ultimately decides between escaping the ship or confronting its unstable reactor core.</p>
 
-    <h4 class="cvstyle-subhead">What it's built on</h4>
-    <p>Rather than starting from a blank page, I built this on top of two open-source Jekyll templates and reworked both substantially:</p>
+    <h4 class="cvstyle-subhead">The signature mechanic: Core Bust</h4>
+
+    <p>At the centre of the combat system is <strong>Core Bust</strong>, a first-person execution mechanic. Armoured enemies contain unstable energy cores. Once their armour has been destroyed, the player can approach and execute them, physically extracting the exposed core through a synchronised animation. A successful execution restores health, but leaves behind a toxic gas cloud that creates a new environmental hazard.</p>
+
+    <p>The mechanic is implemented through coordinated gameplay state machines involving <code>ArmouredEnemy</code>, <code>CoreExecutionTarget</code>, <code>CoreExecutioner</code> and <code>UnstableCore</code>. Armour destruction extracts geometry from the animated mesh and converts it into physical debris rather than simply hiding the armour.</p>
+
+    <h4 class="cvstyle-subhead">Weapons and combat</h4>
+
     <ul>
-      <li>The overall one-page shell (the sliding panel system, video background and layout grid) started from <strong>jekyll-uno</strong> by Josh Gerdes, as extended into <strong>jekyll-uno-timeline</strong> by Thomas Z&uuml;hlke, both MIT-licensed. Almost none of the original styling remains; the panel system, project carousel, colour theming and CV integration are my own additions on top of that base.</li>
-      <li>The Detailed CV page is built on the <strong>Orbit</strong> resume/CV template by Xiaoying Riley (<a href="http://themes.3rdwavemedia.com" target="_blank" rel="nofollow">themes.3rdwavemedia.com</a>, Creative&nbsp;Commons&nbsp;Attribution&nbsp;3.0), restructured into the sidebar-plus-main layout you see and recoloured to match my actual paper CV, then embedded into the main site as its own popup panel.</li>
-      <li>Icons throughout are <strong>Font&nbsp;Awesome&nbsp;Free</strong>. The site is built with Jekyll and hosted on GitHub&nbsp;Pages.</li>
+      <li><strong>The Blaster:</strong> the player's primary firearm, used for conventional combat and breaking enemy armour.</li>
+      <li><strong>The Disassembler:</strong> charged through successful executions, this sidearm electrocutes and temporarily immobilises enemies while exposing their cores for further executions.</li>
+      <li><strong>XR-7 Armour Buster:</strong> an unlockable rocket launcher whose explosions strip armour from nearby enemies, preserving the game's execution-focused combat system.</li>
+      <li><strong>Movement:</strong> sprinting, crouching, sliding, jumping, wall-running and dodging provide mobility during combat encounters.</li>
     </ul>
 
-    <h4 class="cvstyle-subhead">What I actually built</h4>
+    <h4 class="cvstyle-subhead">Enemy AI</h4>
+
+    <p>The game features <strong>four main enemy classes across nine variants</strong>, including armoured Cyber Soldiers and Elites, standard ground robots, and airborne HoverBots. Enemies use NavMesh navigation, room-aware pathfinding, line-of-sight detection, telegraphed attacks and procedural attack animation.</p>
+
+    <p>Enemy behaviour reacts to armour damage, electrical status effects, the player's position and the ship's security doors. Reinforcements arrive through warp-in effects during lockdown encounters.</p>
+
+    <h4 class="cvstyle-subhead">World and progression</h4>
+
+    <p>The spaceship is designed as a continuous level with five connected zones, including a tutorial wing, workshop, reactor chamber, turbine hall and final Boss Hall. Security doors and keycards govern progression between areas, while terminals initiate lockdowns and waves of enemies.</p>
+
+    <p>The game offers <strong>two endings</strong>. The player can survive a timed escape sequence or enter the final chamber and dismantle the giant reactor core through a multi-stage encounter involving three consoles and destructible armour layers.</p>
+
+    <h4 class="cvstyle-subhead">Computer graphics engineering</h4>
+
     <ul>
-      <li>A shared sliding-panel system (About&nbsp;Me, Projects grid, and every individual project) with consistent open/close animation, keyboard (Escape) handling, and swipe support on mobile.</li>
-      <li>The CV page: a from-scratch sidebar-plus-main layout matched to my real CV's colours, with per-project accent colours picked directly from each project's artwork rather than a fixed palette.</li>
-      <li>The Detailed CV popup embeds the standalone CV page in an iframe so it stays a real, linkable page on its own while still opening in-place like every other panel.</li>
-      <li>All the copy, project write-ups and colour decisions on the site are mine, iterated over several rounds to fix layout bugs, improve contrast, and keep the design consistent as content was added.</li>
+      <li><strong>18 custom shaders:</strong> hand-written ShaderLab/HLSL implementations for energy fields, procedural armour damage, toxic gas, electrical effects, reactor beams and animated materials.</li>
+      <li><strong>Procedural space environment:</strong> a GPU-generated nebula skybox featuring a black hole, gravitational lensing and an animated accretion disk.</li>
+      <li><strong>First-principles asset generation:</strong> industrial machinery, tanks, reactors, turbines, pipes, weapons, environmental signage, textures and audio generated using Unity editor tools and Python scripts.</li>
+      <li><strong>Ray-traced ambient occlusion:</strong> a custom rendering implementation with temporal accumulation and depth-aware filtering.</li>
+      <li><strong>Visual effects:</strong> animated energy fields, electrical arcs, armour cracks, volumetric-looking gas effects, reactor instability and procedural particles.</li>
     </ul>
+
+    <h4 class="cvstyle-subhead">Architecture and optimisation</h4>
+
+    <p>Gameplay systems are organised into separate assemblies for shared infrastructure, gameplay, artificial intelligence, user interfaces and rendering.</p>
+
+    <p>A custom <code>ZoneStreamer</code> system reduces rendering overhead by suppressing renderers in rooms that are not currently visible, while preserving physics and AI simulation. The project also includes configurable graphics quality profiles and rendering optimisations for constrained hardware.</p>
+
+    <h4 class="cvstyle-subhead">Development context</h4>
+
+    <p>Developed by <strong>Cosmic Studios</strong> as a five-person COMP307 group project at the University of KwaZulu-Natal. CoreBuster combines real-time computer graphics, interactive gameplay, procedural content creation, game AI and software engineering in a single playable project.</p>
 - slug: confident-agent
 
   title: Confident Agent
@@ -277,78 +312,39 @@
       <li>The protection has costs: the agent abstains on 38&ndash;40% of tasks and takes about six times the time and energy of the baseline. Verification establishes conformance to the API contract, not that the code does what the user asked.</li>
 
     </ul>
-  
-- slug: corebuster
-  title: CoreBuster
-  subtitle: Break the Armour. Take the Core. Choose the Ship's Fate.
-  meta: COMP307 Group Project &middot; Cosmic Studios &middot; Team of 5
-  accent: "#D49A54"
-
+- slug: portfolio-website
+  title: Data-driven Portfolio Website
+  subtitle: This Site
+  meta: Personal Project &middot; Solo
+  accent: "#0b5294"
   links:
-    - href: "https://github.com/PilotDevNull/COMP307-COREBUSTER-FINAL-SUBMISSION"
+    - href: "https://jawadkachbal.com"
+      icon: fas fa-arrow-up-right-from-square
+      title: Visit the live site
+    - href: "https://github.com/PilotDevNull/Portfolio-Website"
       icon: fab fa-github
       title: View on GitHub
-    - href: "https://github.com/PilotDevNull/COMP307-COREBUSTER-FINAL-SUBMISSION#about-this-game"
-      icon: fas fa-gamepad
-      title: Explore the game
-
   technologies:
-    - "Unity 6 / URP"
-    - "C#"
-    - "ShaderLab / HLSL"
-    - "Procedural Mesh Generation"
-    - "NavMesh &amp; Enemy AI"
-    - "Python / Pillow"
-    - "Custom Rendering &amp; Ray-Traced AO"
-
+    - "Jekyll"
+    - "SCSS / Sass"
+    - "Vanilla JavaScript"
+    - "Font Awesome"
+    - "GitHub Pages"
   body: |
-    <p><strong>Break the armour. Take the core. Choose the ship's fate.</strong> CoreBuster is a science-fiction first-person shooter developed in Unity 6 for COMP307 Computer Graphics. The player awakens aboard a malfunctioning spaceship overrun by hostile robots, fights through interconnected industrial chambers, and ultimately decides between escaping the ship or confronting its unstable reactor core.</p>
+    <p>The site you're looking at right now. A single-page Jekyll portfolio with sliding panels for About Me, Projects and a full Detailed CV, all themed and colour-matched to my actual CV rather than a generic template look.</p>
 
-    <h4 class="cvstyle-subhead">The signature mechanic: Core Bust</h4>
-
-    <p>At the centre of the combat system is <strong>Core Bust</strong>, a first-person execution mechanic. Armoured enemies contain unstable energy cores. Once their armour has been destroyed, the player can approach and execute them, physically extracting the exposed core through a synchronised animation. A successful execution restores health, but leaves behind a toxic gas cloud that creates a new environmental hazard.</p>
-
-    <p>The mechanic is implemented through coordinated gameplay state machines involving <code>ArmouredEnemy</code>, <code>CoreExecutionTarget</code>, <code>CoreExecutioner</code> and <code>UnstableCore</code>. Armour destruction extracts geometry from the animated mesh and converts it into physical debris rather than simply hiding the armour.</p>
-
-    <h4 class="cvstyle-subhead">Weapons and combat</h4>
-
+    <h4 class="cvstyle-subhead">What it's built on</h4>
+    <p>Rather than starting from a blank page, I built this on top of two open-source Jekyll templates and reworked both substantially:</p>
     <ul>
-      <li><strong>The Blaster:</strong> the player's primary firearm, used for conventional combat and breaking enemy armour.</li>
-      <li><strong>The Disassembler:</strong> charged through successful executions, this sidearm electrocutes and temporarily immobilises enemies while exposing their cores for further executions.</li>
-      <li><strong>XR-7 Armour Buster:</strong> an unlockable rocket launcher whose explosions strip armour from nearby enemies, preserving the game's execution-focused combat system.</li>
-      <li><strong>Movement:</strong> sprinting, crouching, sliding, jumping, wall-running and dodging provide mobility during combat encounters.</li>
+      <li>The overall one-page shell (the sliding panel system, video background and layout grid) started from <strong>jekyll-uno</strong> by Josh Gerdes, as extended into <strong>jekyll-uno-timeline</strong> by Thomas Z&uuml;hlke, both MIT-licensed. Almost none of the original styling remains; the panel system, project carousel, colour theming and CV integration are my own additions on top of that base.</li>
+      <li>The Detailed CV page is built on the <strong>Orbit</strong> resume/CV template by Xiaoying Riley (<a href="http://themes.3rdwavemedia.com" target="_blank" rel="nofollow">themes.3rdwavemedia.com</a>, Creative&nbsp;Commons&nbsp;Attribution&nbsp;3.0), restructured into the sidebar-plus-main layout you see and recoloured to match my actual paper CV, then embedded into the main site as its own popup panel.</li>
+      <li>Icons throughout are <strong>Font&nbsp;Awesome&nbsp;Free</strong>. The site is built with Jekyll and hosted on GitHub&nbsp;Pages.</li>
     </ul>
 
-    <h4 class="cvstyle-subhead">Enemy AI</h4>
-
-    <p>The game features <strong>four main enemy classes across nine variants</strong>, including armoured Cyber Soldiers and Elites, standard ground robots, and airborne HoverBots. Enemies use NavMesh navigation, room-aware pathfinding, line-of-sight detection, telegraphed attacks and procedural attack animation.</p>
-
-    <p>Enemy behaviour reacts to armour damage, electrical status effects, the player's position and the ship's security doors. Reinforcements arrive through warp-in effects during lockdown encounters.</p>
-
-    <h4 class="cvstyle-subhead">World and progression</h4>
-
-    <p>The spaceship is designed as a continuous level with five connected zones, including a tutorial wing, workshop, reactor chamber, turbine hall and final Boss Hall. Security doors and keycards govern progression between areas, while terminals initiate lockdowns and waves of enemies.</p>
-
-    <p>The game offers <strong>two endings</strong>. The player can survive a timed escape sequence or enter the final chamber and dismantle the giant reactor core through a multi-stage encounter involving three consoles and destructible armour layers.</p>
-
-    <h4 class="cvstyle-subhead">Computer graphics engineering</h4>
-
+    <h4 class="cvstyle-subhead">What I actually built</h4>
     <ul>
-      <li><strong>18 custom shaders:</strong> hand-written ShaderLab/HLSL implementations for energy fields, procedural armour damage, toxic gas, electrical effects, reactor beams and animated materials.</li>
-      <li><strong>Procedural space environment:</strong> a GPU-generated nebula skybox featuring a black hole, gravitational lensing and an animated accretion disk.</li>
-      <li><strong>First-principles asset generation:</strong> industrial machinery, tanks, reactors, turbines, pipes, weapons, environmental signage, textures and audio generated using Unity editor tools and Python scripts.</li>
-      <li><strong>Ray-traced ambient occlusion:</strong> a custom rendering implementation with temporal accumulation and depth-aware filtering.</li>
-      <li><strong>Visual effects:</strong> animated energy fields, electrical arcs, armour cracks, volumetric-looking gas effects, reactor instability and procedural particles.</li>
+      <li>A shared sliding-panel system (About&nbsp;Me, Projects grid, and every individual project) with consistent open/close animation, keyboard (Escape) handling, and swipe support on mobile.</li>
+      <li>The CV page: a from-scratch sidebar-plus-main layout matched to my real CV's colours, with per-project accent colours picked directly from each project's artwork rather than a fixed palette.</li>
+      <li>The Detailed CV popup embeds the standalone CV page in an iframe so it stays a real, linkable page on its own while still opening in-place like every other panel.</li>
+      <li>All the copy, project write-ups and colour decisions on the site are mine, iterated over several rounds to fix layout bugs, improve contrast, and keep the design consistent as content was added.</li>
     </ul>
-
-    <h4 class="cvstyle-subhead">Architecture and optimisation</h4>
-
-    <p>Gameplay systems are organised into separate assemblies for shared infrastructure, gameplay, artificial intelligence, user interfaces and rendering.</p>
-
-    <p>A custom <code>ZoneStreamer</code> system reduces rendering overhead by suppressing renderers in rooms that are not currently visible, while preserving physics and AI simulation. The project also includes configurable graphics quality profiles and rendering optimisations for constrained hardware.</p>
-
-    <h4 class="cvstyle-subhead">Development context</h4>
-
-    <p>Developed by <strong>Cosmic Studios</strong> as a five-person COMP307 group project at the University of KwaZulu-Natal. CoreBuster combines real-time computer graphics, interactive gameplay, procedural content creation, game AI and software engineering in a single playable project.</p>
-
-
